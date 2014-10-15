@@ -136,29 +136,22 @@ class TextParser{
 	*
 	*/
 	
-  private function findTemp($text) {
-  	
-  	$matchedTemplate = false;
-  	$maxMatch = -1;
-  
-  	$directory = new DirectoryIterator($this->templatesDirectoryPath);
-  	
+	private function findTemp($text) {
+		$matchedTemplate = false;
+		$maxMatch = -1;
+		$directory = new DirectoryIterator($this->templatesDirectoryPath);
+		
 		foreach ($directory as $fileInfo) {
-
 			if(!$fileInfo->isDot() && $fileInfo->getExtension() == 'txt'){
-				
 				$data = file_get_contents($fileInfo->getPathname());
 				$match = similar_text($text, $data, $matchPercent);
-
+				
 				if($matchPercent > $maxMatch){
-				  
 					$maxMatch = $matchPercent;
 					$matchedTemplate = $data;
-					
 				}//End if current template match is higher
 				
 			}//End if current is a txt file
-			
 		}//End foreach loop over direcoty files
 		
 		return $matchedTemplate;
