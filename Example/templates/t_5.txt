@@ -1,0 +1,105 @@
+<table width="99%" border="0" cellpadding="1" cellspacing="0" bgcolor="#EAEAEA"><tr><td>
+                            <table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF">
+                            <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Date of arrival</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">{%vt%}</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Name</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">{%vb%}</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Nationality</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">{%vfds%}</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Phone</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">{%vsac%}</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Email</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;"><a href="mailto:{%rrfs%}">{%v523%}</a></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Adults</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">{%adsa%}</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Children</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">{%c1%}</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Tour Package</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">{%url%}</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>IP Address</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">{%ip%}</font>
+                                                            </td>
+                                                       </tr>
+                                                       </table>
+                        </td>
+                   </tr>
+               </table>

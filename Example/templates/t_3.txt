@@ -1,0 +1,121 @@
+<table border="0" cellspacing="0" cellpadding="0" width="100%"
+bgcolor="#f7f9fc">
+<tbody>
+<tr>
+<td height="30"> </td>
+</tr>
+<tr>
+<td align="center">
+<table border="0" cellspacing="0" cellpadding="0" width="600" bgcolor="#eeeeee">
+<tbody>
+<tr>
+<td width="13" height="30"
+background="http://v2.jotform.com/images/win2_title_left.gif"> </td>
+<td align="left" valign="bottom"
+background="http://v2.jotform.com/images/win2_title.gif"><img style="float:
+left;" src="http://v2.jotform.com/images/win2_title_logo.gif" alt="JotForm.com"
+width="63" height="26" /></td>
+<td width="14"
+background="http://v2.jotform.com/images/win2_title_right.gif"> </td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" width="600" bgcolor="#eeeeee">
+<tbody>
+<tr>
+<td width="4"
+background="http://v2.jotform.com/images/win2_left.gif"> </td>
+<td align="center" bgcolor="#ffffff">
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+<tbody>
+<tr>
+<td style="text-decoration: underline; padding: 5px !important;" width="170"
+bgcolor="#f9f9f9"><strong>Question</strong></td>
+<td style="text-decoration: underline; padding: 5px !important;"
+bgcolor="#f9f9f9"><strong>Answer</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="white">Preferred Date
+of Arrival</td>
+<td style="padding: 5px !important;" bgcolor="white">{%arrival_date%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="#f9f9f9">Date of
+Departure</td>
+<td style="padding: 5px !important;" bgcolor="#f9f9f9">{%departure_date%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="white">Adults</td>
+<td style="padding: 5px !important;" bgcolor="white">{%adults%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="#f9f9f9">Children</td>
+<td style="padding: 5px !important;" bgcolor="#f9f9f9">{%children%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="white">Children's
+Age</td>
+<td style="padding: 5px !important;" bgcolor="white">{%cages%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="#f9f9f9">Preferred
+Hotel Class</td>
+<td style="padding: 5px !important;" bgcolor="#f9f9f9">{%class%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="white">Describe your
+tour. The more details the better</td>
+<td style="padding: 5px !important;" bgcolor="white">{%more_info%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="#f9f9f9">Full
+Name</td>
+<td style="padding: 5px !important;" bgcolor="#f9f9f9">{%name%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170"
+bgcolor="white">Nationality</td>
+<td style="padding: 5px !important;" bgcolor="white">{%nationality%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="#f9f9f9">Phone
+Number</td>
+<td style="padding: 5px !important;" bgcolor="#f9f9f9">{%phone%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="white">E-mail</td>
+<td style="padding: 5px !important;" bgcolor="white">{%email%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="#f9f9f9">Confirm
+E-mail</td>
+<td style="padding: 5px !important;" bgcolor="#f9f9f9">{%emaila%}</td>
+</tr>
+<tr>
+<td style="padding: 5px !important;" width="170" bgcolor="white">Comments</td>
+<td style="padding: 5px !important;" bgcolor="white">{%comments%}</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width="4"
+background="http://v2.jotform.com/images/win2_right.gif"> </td>
+</tr>
+<tr>
+<td style="font-size: 4px;" height="4"
+background="http://v2.jotform.com/images/win2_foot_left.gif"> </td>
+<td style="font-size: 4px;"
+background="http://v2.jotform.com/images/win2_foot.gif"> </td>
+<td style="font-size: 4px;"
+background="http://v2.jotform.com/images/win2_foot_right.gif"> </td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td height="30"> </td>
+</tr>
+</tbody>
+</table>
+<p><br /><br /></p>

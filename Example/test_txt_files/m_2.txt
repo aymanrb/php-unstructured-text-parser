@@ -1,0 +1,12 @@
+Hi Sir,
+
+New Booking ... information follows:
+
+Username: test
+Full Name: Eve Arron
+E-Mail Address: example@test.com
+URL: www.example.com/something
+Nationality: German
+Phone: 6655885524455
+Comments: Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here
+

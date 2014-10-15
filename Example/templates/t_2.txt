@@ -1,0 +1,12 @@
+Hi Sir,
+
+New Booking ... information follows:
+
+Username: {%user%}
+Full Name: {%name%}
+E-Mail Address: {%email%}
+URL: {%url%}
+Nationality: {%nationality%}
+Phone: {%phone%}
+Comments: {%text%}
+

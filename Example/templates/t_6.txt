@@ -1,0 +1,60 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+			body, td {
+				font-family: Lucida, Verdana; font-size: 8.0pt;
+				color: #000000;
+				background-color: #ffffff;
+			}
+			h1 {
+				font-size: 13.5pt;
+				text-align: center;
+			}
+			b {
+				font-weight: bold;
+			}
+			.name-td {
+				color: #606060;
+				text-align: right;
+				vertical-align: top;
+			}
+			.value-td {
+				vertical-align: top;
+			}
+			.generated-by {
+				font-size: 7.6pt;
+				color: #304050;
+			}
+		</style>
+
+
+</head>
+<body>
+<h1>Chat Transcript</h1>
+<table cellspacing="0" cellpadding="2" border="0" width="100%">
+<tr>
+<td width="50%"></td><td align="right" width="50%">
+<table cellspacing="0" cellpadding="2" border="0">
+<tr>
+<td class="name-td">Visitor:</td><td class="value-td">{%name%}</td>
+</tr>
+<tr>
+<td class="name-td">Operator:</td><td class="value-td"><a title="Mail to: {%url_mail%}" href="mailto:{%operator_mail%}">{%operator_name%}</a></td>
+</tr>
+<tr>
+<td class="name-td">Company:</td><td class="value-td">{%source%}</td>
+</tr>
+<tr>
+<td class="name-td">Started:</td><td class="value-td">{%start%}</td>
+</tr>
+<tr>
+<td class="name-td">Finished:</td><td class="value-td">{%end%}</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+{%data%}
+</body>
+</html>

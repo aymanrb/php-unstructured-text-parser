@@ -1,0 +1,11 @@
+Sent at {%created%}
+
+<br />
+<br />
+Hi <font color='#db3484'>{%name1%}</font>,<br />
+<br />
+<table border='0' bgcolor='#db3484' width='500' align="left" cellpadding='5'><tr><td><font color='white'><b>{%action%}</b></font></td></tr></table><br /><br />
+<br />
+
+
+Click here to view the booked tour:  <a href={%url%}>{%tour%}</a> <br /><br /><br />  E-mail address :{%mail1%}<br /><br /> Customer Name :{%myname%}<br /><br /> Country :{%country%}<br /><br /> Arrival Date : {%arrival_date%}<br /><br /> Departure Date : {%departure_date%}<br /><br /> Number of Adults : {%adults%}<br /><br /> Number of Children :{%children%}<br /><br /> Additional Requests :{%more_data%}<br /><br />

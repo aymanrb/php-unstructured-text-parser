@@ -1,0 +1,55 @@
+<table align="center" width="500" border="0" cellpadding="4" cellspacing="4" bgcolor="#195996">
+<tr>
+							<td colspan="2" bgcolor="#BACDF4">Name</td>
+							<td colspan="2" bgcolor="#BACDF4">{%Name%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">UserEmail</td>
+							<td colspan="2" bgcolor="#BACDF4">{%Mail%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Nationality</td>
+							<td colspan="2" bgcolor="#BACDF4">{%Nationality%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">UserPhone</td>
+							<td colspan="2" bgcolor="#BACDF4">{%Phone%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Arrival</td>
+							<td colspan="2" bgcolor="#BACDF4">{%ArrivalDate%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Departure</td>
+							<td colspan="2" bgcolor="#BACDF4">{%Departure%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Adults</td>
+							<td colspan="2" bgcolor="#BACDF4">{%adults%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Children</td>
+							<td colspan="2" bgcolor="#BACDF4">{%Children%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Children Age</td>
+							<td colspan="2" bgcolor="#BACDF4">{%child%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Comment</td>
+							<td colspan="2" bgcolor="#BACDF4">{%comment%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Url Goal</td>
+							<td colspan="2" bgcolor="#BACDF4">{%goal%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Ver Code</td>
+							<td colspan="2" bgcolor="#BACDF4">{%ver_code%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Url</td>
+<td colspan="2"
+bgcolor="#BACDF4">{%url%}
+</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Ip Address</td>
+							<td colspan="2" bgcolor="#BACDF4">{%ip%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Date & Time</td>
+							<td colspan="2" bgcolor="#BACDF4">{%created%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Source</td>
+							<td colspan="2" bgcolor="#BACDF4">{%source%}</td>
+						  </tr><tr>
+							<td colspan="2" bgcolor="#BACDF4">Http Referer</td>
+<td colspan="2" bgcolor="#BACDF4">{%referer%}</td>
+						  </tr></table>

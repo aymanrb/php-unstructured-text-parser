@@ -1,0 +1,111 @@
+<html><body bgcolor="#f7f9fc" class="Created on Submission for Form
+30271507057953" >
+            <table bgcolor="#f7f9fc" width="100%" border="0" cellspacing="0"
+cellpadding="0">
+            <tr>
+              <td height="30"> </td>
+            </tr>
+            <tr>
+              <td align="center"><table width="600" border="0" cellspacing="0"
+cellpadding="0" bgcolor="#eeeeee" >
+                <tr>
+                  <td width="13" height="30"
+background="http://submit.jotformpro.com/images/win2_title_left.gif"></td>
+                  <td align="left"
+background="http://submit.jotformpro.com/images/win2_title.gif" valign="bottom">
+                      <img style="float:left"
+src="http://submit.jotformpro.com/images/win2_title_logo.gif" width="63"
+height="26" alt="jotform.com"  />
+                  </td>
+                  <td width="14"
+background="http://submit.jotformpro.com/images/win2_title_right.gif"></td>
+                </tr>
+              </table>
+              <table width="600" border="0" cellspacing="0" cellpadding="0"
+bgcolor="#eeeeee" >
+                <tr>
+                  <td width="4"
+background="http://submit.jotformpro.com/images/win2_left.gif"></td>
+                  <td align="center" bgcolor="#FFFFFF">
+                  <table width="100%" border="0" cellspacing="0"
+cellpadding="5">
+                  <tr>
+                      <td bgcolor="#f9f9f9" width="170"
+style="text-decoration:underline; padding:5px !important;"><b>Question</b></td>
+                      <td bgcolor="#f9f9f9" style="text-decoration:underline;
+padding:5px !important;"><b>Answer</b></td>
+                  </tr><tr>
+                       <td bgcolor='white' style='padding:5px !important;'
+width=170>Date of Arrival</td>
+                       <td bgcolor='white' style='padding:5px
+!important;'>18-03-2014</td>
+                       </tr><tr>
+                       <td bgcolor='#f9f9f9' style='padding:5px !important;'
+width=170>Adults</td>
+                       <td bgcolor='#f9f9f9' style='padding:5px
+!important;'>2</td>
+                       </tr><tr>
+                       <td bgcolor='white' style='padding:5px !important;'
+width=170>Children</td>
+                       <td bgcolor='white' style='padding:5px
+!important;'>0</td>
+                       </tr><tr>
+                       <td bgcolor='#f9f9f9' style='padding:5px !important;'
+width=170>Children's age</td>
+                       <td bgcolor='#f9f9f9' style='padding:5px
+!important;'></td>
+                       </tr><tr>
+                       <td bgcolor='white' style='padding:5px !important;'
+width=170>Full Name</td>
+                       <td bgcolor='white' style='padding:5px !important;'>John
+Williams</td>
+                       </tr><tr>
+                       <td bgcolor='#f9f9f9' style='padding:5px !important;'
+width=170>Phone Number</td>
+                       <td bgcolor='#f9f9f9' style='padding:5px !important;'>()
+</td>
+                       </tr><tr>
+                       <td bgcolor='white' style='padding:5px !important;'
+width=170>Nationality</td>
+                       <td bgcolor='white' style='padding:5px
+!important;'>United States</td>
+                       </tr><tr>
+                       <td bgcolor='#f9f9f9' style='padding:5px !important;'
+width=170>E-mail</td>
+                       <td bgcolor='#f9f9f9' style='padding:5px
+!important;'>somemail@yahoo.com</td>
+                       </tr><tr>
+                       <td bgcolor='white' style='padding:5px !important;'
+width=170>Confirm E-mail</td>
+                       <td bgcolor='white' style='padding:5px
+!important;'>somemail@yahoo.com</td>
+                       </tr><tr>
+                       <td bgcolor='#f9f9f9' style='padding:5px !important;'
+width=170>Your Comments</td>
+                       <td bgcolor='#f9f9f9' style='padding:5px !important;'>we would like to ....</td>
+                       </tr><tr>
+                       <td bgcolor='white' style='padding:5px !important;'
+width=170>url</td>
+                       <td bgcolor='white' style='padding:5px
+!important;'>http://www.domain.com/test/yus</td>
+                       </tr>
+                  </table>
+                  </td>
+                  <td width="4"
+background="http://submit.jotformpro.com/images/win2_right.gif"></td>
+                </tr>
+                <tr>
+                  <td height="4"
+background="http://submit.jotformpro.com/images/win2_foot_left.gif"></td>
+                  <td
+background="http://submit.jotformpro.com/images/win2_foot.gif"></td>
+                  <td
+background="http://submit.jotformpro.com/images/win2_foot_right.gif"></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td height="30"> </td>
+            </tr>
+          </table>
+          </body></html>

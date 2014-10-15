@@ -1,0 +1,105 @@
+<table width="99%" border="0" cellpadding="1" cellspacing="0" bgcolor="#EAEAEA"><tr><td>
+                            <table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF">
+                            <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Date of arrival</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">06/02/2015</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Name</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">Full Name of New Client</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Nationality</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">United Kingdom</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Phone</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">07780918266</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Email</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;"><a href="mailto:test@test.com">test@test.com</a></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Adults</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">2</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Children</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">0</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>Tour Package</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">http://www.test.com/test/</font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#EAF2FA">
+                                                            <td colspan="2">
+                                                                <font style="font-family: sans-serif; font-size:12px;"><strong>IP Address</strong></font>
+                                                            </td>
+                                                       </tr>
+                                                       <tr bgcolor="#FFFFFF">
+                                                            <td width="20"> </td>
+                                                            <td>
+                                                                <font style="font-family: sans-serif; font-size:12px;">99.999.999.999</font>
+                                                            </td>
+                                                       </tr>
+                                                       </table>
+                        </td>
+                   </tr>
+               </table>

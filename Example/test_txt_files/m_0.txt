@@ -1,0 +1,12 @@
+Sent at Thursday 9th of October 2014 03:20:44 PM
+
+<br />
+<br />
+Hi <font color='#db3484'>Ayman </font>,<br />
+<br />
+<table border='0' bgcolor='#db3484' width='500' align="left" cellpadding='5'><tr><td><font color='white'><b>New Booking</b></font></td></tr></table><br /><br />
+<br />
+
+
+Click here to view the booked tour:  <a href='http://www.example.com/page.html' >Tour Name</a> <br /><br /><br />  E-mail address : mymail@test.com <br /><br /> Customer Name : Hello World <br /><br /> Country : Egypt <br /><br /> Arrival Date : 11 - 10 - 2014 <br /><br />
+ Departure Date : 11 - 10 - 2014 <br /><br /> Number of Adults : 4 <br /><br /> Number of Children : 2 <br /><br /> Additional Requests : dsadsa <br /><br />
