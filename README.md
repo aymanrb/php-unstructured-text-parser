@@ -11,7 +11,7 @@ Useful when you want to parse data out of:
 * Documents with definable templates / expressions
 
 
-**Note:** When too many templates are added to the templates directory it slows the parsing process in a noticeable manner. This happens since the class runs over all the template files and compares it with the passed text to detect the most suitable template for parsing.
+**Note:** When too many templates are added to the specified templates directory it slows the parsing process in a noticeable manner. This happens since the class runs over all the template files and compares it with the passed text to decide on the most suitable template for parsing.
 
 Version
 ----------
@@ -22,15 +22,15 @@ How it works
 ----------
 1- Grab a single copy of the text you want to parse.
 
-2- Replace every single varying text within it to a name variable in the form of ``{%VariableName%}``
+2- Replace every single varying text within it to a named variable in the form of ``{%VariableName%}``
 
 3- Add the templates file into the templates directory you defined to the class with a txt extension ``fileName.txt``
 
-4- Pass the text you wish to parse to the parse method of and let it do the magic for you.
+4- Pass the text you wish to parse to the parse method of the class and let it do the magic for you.
 
 Template Example
 ------------------------
-Lets assume the text documents you want to parse looks like this:
+If the text documents you want to parse looks like this:
 
 ```
 Hi Guthuber,
@@ -44,7 +44,7 @@ Best Regards
 Admin
 ```
 
-Your Template file (``example_template.txt``) should contain:
+Then your Template file (``example_template.txt``) should be:
 
 ```
 Hi {%name_of_reciever%},
@@ -69,5 +69,5 @@ Array(
 )
 ```
 
-*"Works perfectl with HTML tags and anything else you may wish"*
+*"Works perfectly with HTML tags and anything else you may wish"*
 
