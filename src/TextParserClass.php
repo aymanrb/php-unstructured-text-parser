@@ -66,7 +66,7 @@ class TextParser{
 		$text = $this->prepareText($text);
 		
 		//Find the most appropriate template for this text format and preapre it for parsing
-		$matchedTemplate = $this->findTemp($text);
+		$matchedTemplate = $this->findTemplate($text);
 		$matchedTemplate = $this->prepareTemplate($matchedTemplate);
 		
 		return $this->extractData($text, $matchedTemplate);
@@ -110,7 +110,7 @@ class TextParser{
 	*
 	* @param string $text; 			The prepared text provided by the user for parsing
 	* @param string $template;	The template regex pattern from the matched template
-	* @return mixed;						The matched data array or null on unmatched text
+	* @return mixed;						The matched data array or false on unmatched text
 	* @access private
 	*
 	*/
@@ -128,7 +128,26 @@ class TextParser{
 			return false;
 		}
 		
+		return $this->cleanExtractedData($matches);
+	}
+	
+	/** 
+	* Removes unwanted stuff from the data array like html tags and extra spaces
+	*
+	* @param mixed $matches; 		Array with matched strings
+	* @return mixed;						The cleaned data array
+	* @access private
+	*
+	*/
+	
+	private function cleanExtractedData($matches){
+		
+		foreach($matches as $key => $match){
+			$matches[$key] = trim(strip_tags($match));
+		}
+		
 		return $matches;
+	
 	}
 	
 	/** 
@@ -140,7 +159,7 @@ class TextParser{
 	*
 	*/
 	
-	private function findTemp($text) {
+	private function findTemplate($text) {
 		$matchedTemplate = false;
 		$maxMatch = -1;
 		$directory = new DirectoryIterator($this->templatesDirectoryPath);
@@ -156,6 +175,7 @@ class TextParser{
 				}//End if current template match is higher
 				
 			}//End if current is a txt file
+			
 		}//End foreach loop over direcoty files
 		
 		return $matchedTemplate;
