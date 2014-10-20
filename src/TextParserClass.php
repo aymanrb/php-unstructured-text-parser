@@ -124,6 +124,10 @@ class TextParser{
 		$keys = array_filter(array_keys($matches),'is_string');
 		$matches = array_intersect_key($matches,array_flip($keys));
 		
+		if(empty($matches)){
+			return false;
+		}
+		
 		return $matches;
 	}
 	
