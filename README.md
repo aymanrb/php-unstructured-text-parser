@@ -1,5 +1,7 @@
 Unstructured Text Parser [PHP]
 ===========================================
+[![Build Status](https://travis-ci.org/aymanrb/php-unstructured-text-parser.svg?branch=master)](https://travis-ci.org/aymanrb/php-unstructured-text-parser)
+
 
 What's this ?!
 ----------------------------------
