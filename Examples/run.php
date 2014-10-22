@@ -1,17 +1,21 @@
 <?php
 require_once('../src/TextParserClass.php');
 
-$parser = new TextParser('templates');
+try{
+	$parser = new TextParser('templates');
 
-$textFiles = new DirectoryIterator('test_txt_files');
+	$textFiles = new DirectoryIterator('test_txt_files');
 
-foreach($textFiles as $txtObj){
-	if($txtObj->getExtension() == 'txt'){
-		echo '<h1>' . $txtObj->getFilename() . '</h1>';
-		$text = file_get_contents($txtObj->getPathname());
+	foreach($textFiles as $txtObj){
+		if($txtObj->getExtension() == 'txt'){
+			echo '<h1>' . $txtObj->getFilename() . '</h1>';
+			$text = file_get_contents($txtObj->getPathname());
 		
-		echo "<pre>";
-			print_r($parser->parseText($text));
-		echo "</pre>";
+			echo "<pre>";
+				print_r($parser->parseText($text));
+			echo "</pre>";
+		}
 	}
+}catch (Exception $e) {
+    echo '<h1>Caught exception:</h1>' . $e->getMessage();
 }
