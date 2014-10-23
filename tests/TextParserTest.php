@@ -38,7 +38,7 @@ class TextParserTest extends PHPUnit_Framework_TestCase {
   		$this->assertFalse($parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/noTemplate.txt')));
   	}
 
-  	/**
+    /**
      * @covers	TextParser::parseText
      * @uses    TextParser::__construct
      * @uses    TextParser::setTemplatesDir
@@ -54,7 +54,7 @@ class TextParserTest extends PHPUnit_Framework_TestCase {
   		$this->assertEquals(13, count($parsedValues));
   	}
 
-  	/**
+    /**
      * @covers	TextParser::parseText
      * @uses    TextParser::__construct
      * @uses    TextParser::setTemplatesDir
@@ -84,5 +84,5 @@ class TextParserTest extends PHPUnit_Framework_TestCase {
         $parser->setLogFile('noFile.log');
     }
 
-    //MORE TESTS ON LOG METHODS HERE
+    //TODO:MORE TESTS ON LOG METHODS HERE
 }
