@@ -3,6 +3,8 @@ require_once('../src/TextParserClass.php');
 
 try{
 	$parser = new TextParser('templates');
+	
+	$parser->setLogFile('Logs/parser.log');
 
 	$textFiles = new DirectoryIterator('test_txt_files');
 
