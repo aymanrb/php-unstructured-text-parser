@@ -3,7 +3,7 @@ Unstructured Text Parser [PHP]
 [![Build Status](https://travis-ci.org/aymanrb/php-unstructured-text-parser.svg?branch=master)](https://travis-ci.org/aymanrb/php-unstructured-text-parser)
 
 
-What's this ?!
+About this Class
 ----------------------------------
 This is a PHP Class to help extract text out of documents that are not structured in a processing friendly way. When you want to parse text out of form generated emails for example you can create a template matching the expected incoming mail format while specifying the variable text elements and leave the rest for the class to extract your preformatted variables out of the incoming mails' body text.
 
@@ -15,7 +15,7 @@ Useful when you want to parse data out of:
 
 **Note:** When too many templates are added to the specified templates directory it slows the parsing process in a noticeable manner. This happens since the class runs over all the template files and compares it with the passed text to decide on the most suitable template for parsing.
 
-Version
+Current Version
 ----------
 1.0-beta
 
@@ -71,4 +71,3 @@ Array(
 ```
 
 *"Works perfectly with HTML tags and anything else you may wish"*
-
