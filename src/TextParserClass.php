@@ -6,7 +6,7 @@
  * text files based on a predefined template using PHP regular expressions.
  *
  * @author     Ayman R. Bedair <http://www.AymanRB.com>
- * @version    1.0-beta
+ * @version    1.0.1-beta
  * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
  */
 class TextParser {
