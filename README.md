@@ -17,8 +17,7 @@ Useful when you want to parse data out of:
 
 Version
 ----------
-0.1-beta
-
+1.0-beta
 
 How it works
 ----------
