@@ -1,6 +1,9 @@
 Unstructured Text Parser [PHP]
 ===========================================
 [![Build Status](https://travis-ci.org/aymanrb/php-unstructured-text-parser.svg?branch=master)](https://travis-ci.org/aymanrb/php-unstructured-text-parser)
+[![Latest Stable Version](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/v/stable.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
+[![Latest Unstable Version](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/v/unstable.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
+[![License](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/license.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 
 
 About this Class
