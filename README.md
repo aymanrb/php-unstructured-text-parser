@@ -19,13 +19,50 @@ Current Version
 ----------
 1.0.1-beta
 
-How it works
+
+Installation
+----------
+
+1- Using [composer](https://getcomposer.org/) simply run the following:
+
+```shell
+$ composer require aymanrb/php-unstructured-text-parser
+```
+
+2- Clone / Copy the files from this repository to you local libs directory:
+
+```shell
+$ git clone https://github.com/aymanrb/php-unstructured-text-parser.git
+```
+
+
+
+[Usage example](https://github.com/aymanrb/php-unstructured-text-parser/blob/master/Examples/run.php)
+----------
+```php
+<?php
+require_once('src/TextParserClass.php');
+
+try{
+	$parser = new TextParser('/path/to/templatesDirectory');
+
+	$textToParse = 'Text to be parsed fetched from a file, mail, web service, or even added directly to the a string variable like this';
+	echo "<pre>";
+		print_r($parser->parseText($textToParse));
+	echo "</pre>";
+	
+}catch (Exception $e) {
+    echo '<b>Error:</b> ' . $e->getMessage();
+}
+```
+
+Parsing Procedure
 ----------
 1- Grab a single copy of the text you want to parse.
 
 2- Replace every single varying text within it to a named variable in the form of ``{%VariableName%}``
 
-3- Add the templates file into the templates directory you defined to the class with a txt extension ``fileName.txt``
+3- Add the templates file into the templates directory (defined in parsing code) with a txt extension ``fileName.txt``
 
 4- Pass the text you wish to parse to the parse method of the class and let it do the magic for you.
 
@@ -34,7 +71,7 @@ Template Example
 If the text documents you want to parse looks like this:
 
 ```
-Hi Guthuber,
+Hi GitHub-er,
 If you wish to parse message coming from a website that states info like:
 Name: Pet Cat
 E-Mail: email@example.com
@@ -63,11 +100,11 @@ The output of a successful parsing job would be:
 
 ```
 Array(
-	'name_of_reciever' => 'Githuber',
+	'name_of_reciever' => 'GitHub-er',
     'sender_name' => 'Pet Cat',
     'sender_email' => 'email@example.com',
     'Comment' => 'Some text goes here'
 )
 ```
 
-*"Works perfectly with HTML tags and anything else you may wish"*
+*"Works perfectly with plain text, HTML tags, special characters and anything else you may wish"*
