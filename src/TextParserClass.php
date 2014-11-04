@@ -6,7 +6,7 @@
  * text files based on a predefined template using PHP regular expressions.
  *
  * @author     Ayman R. Bedair <http://www.AymanRB.com>
- * @version    1.0.1-beta
+ * @version    1.0.2-beta
  * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
  */
 class TextParser {
@@ -162,10 +162,21 @@ class TextParser {
      */
 
     private function cleanExtractedData($matches) {
-        foreach ($matches as $key => $match) {
-            $matches[$key] = trim(strip_tags($match));
-        }
-        return $matches;
+    		return array_map(array($this, 'cleanElement'), $matches);
+    }
+    
+    
+    /**
+     * A callback method to remove unwanted stuff from the extracted data element
+     *
+     * @param string $value; 		The extracted text from the matched element
+     * @return string;					Clean text
+     * @access private
+     * @see cleanExtractedData()
+     *
+     */
+    private function cleanElement($value) {
+    		return trim(strip_tags($value));
     }
 
     /**
@@ -182,6 +193,7 @@ class TextParser {
         $maxMatch        = -1;
         $matchedFile     = NULL;
         $directory       = new DirectoryIterator($this->templatesDirectoryPath);
+        
         foreach ($directory as $fileInfo) {
             if ($fileInfo->getExtension() == 'txt') { //make sure it's a text file
                 $data  = file_get_contents($fileInfo->getPathname());
@@ -193,6 +205,7 @@ class TextParser {
                 } //End if current template match is higher
             } //End if current is a txt file
         } //End foreach loop over direcoty files
+        
         $this->logRow('Matched Template File : ' . $matchedFile);
         return $matchedTemplate;
     }

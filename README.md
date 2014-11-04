@@ -20,7 +20,7 @@ Useful when you want to parse data out of:
 
 Current Version
 ----------
-1.0.1-beta
+1.0.2-beta
 
 
 Installation
