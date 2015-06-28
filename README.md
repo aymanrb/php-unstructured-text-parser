@@ -88,7 +88,7 @@ Admin
 Then your Template file (``example_template.txt``) should be:
 
 ```
-Hi {%name_of_reciever%},
+Hi {%name_of_receiver%},
 If you wish to parse message coming from a website that states info like:
 Name: {%sender_name%}
 E-Mail: {%sender_email%}
@@ -103,7 +103,7 @@ The output of a successful parsing job would be:
 
 ```
 Array(
-	'name_of_reciever' => 'GitHub-er',
+	'name_of_receiver' => 'GitHub-er',
     'sender_name' => 'Pet Cat',
     'sender_email' => 'email@example.com',
     'Comment' => 'Some text goes here'
