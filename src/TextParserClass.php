@@ -124,9 +124,18 @@ class TextParser {
      */
 
     private function prepareTemplate($templateTxt) {
-        $templateTxt = preg_replace('/{%(.*)%}/U', '(?<$1>.*)', $templateTxt); //Replace all {Var} notation to (?<Var>.*) for regex pattern
-        $templateTxt = str_replace(array('|',"'"), array('\|',"\'"), $templateTxt); //Escape buggy characters
-        $templateTxt = preg_replace('/\s+/', ' ', $templateTxt); //Remove all multiple whitespaces and replace it with single space
+        $patterns = [
+            '/\\\{%(.*)%\\\}/U', // 1 Replace all {%Var%}...
+            '/\s+/',             // 2 Replace all white-spaces...
+        ];
+
+        $replacements = [
+            '(?<$1>.*)',         // 1 ...with (?<Var>.*)
+            ' ',                 // 2 ...with a single space
+        ];
+
+        $templateTxt = preg_replace($patterns, $replacements, preg_quote($templateTxt, '/'));
+        
         return trim($templateTxt);
     }
 
@@ -142,7 +151,7 @@ class TextParser {
 
     private function extractData($text, $template) {
         //Extract the text based on the provided template using REGEX
-        preg_match("|" . $template . "|s", $text, $matches);
+        preg_match('/' . $template . '/s', $text, $matches);
         //Extract only the named parameters from the matched regex array
         $keys    = array_filter(array_keys($matches), 'is_string');
         $matches = array_intersect_key($matches, array_flip($keys));
