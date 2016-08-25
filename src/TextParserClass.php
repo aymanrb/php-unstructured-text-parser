@@ -101,6 +101,43 @@ class TextParser {
     }
 
     /**
+     * The call for action method, this is the parse job initiator
+     *
+     * @param string $text; The text provided by the user for parsing
+     * @return mixed				 The matched data array or null on unmatched text
+     * @access public
+     *
+     */
+
+    public function parseTextToAllTemplates($text) {
+        $this->logRow('Parsing: ' . $text);
+        //Prepare the text for parsing
+        $text            = $this->prepareText($text);
+
+        $extractedData   = false;
+        // Get all templates
+        $templates = $this->getTemplates();
+
+        foreach ($templates as $template) {
+            $matchedTemplate = $this->prepareTemplate($template['data']);
+            $extractedData   = $this->extractData($text, $matchedTemplate);
+
+            $this->logRow('Template File : ' . $template['path']);
+
+            if ($extractedData) {
+                $this->logRow('Got this: ' . json_encode($extractedData));
+                break;
+            } else {
+                $this->logRow('Got nothing');
+            }
+        }
+
+
+        $this->savelog();
+        return $extractedData;
+    }
+
+    /**
      * Prepares the provided text for parsing by escaping known characters and removing exccess whitespaces
      *
      * @param string txt; The text provided by the user for parsing
@@ -217,6 +254,31 @@ class TextParser {
         
         $this->logRow('Matched Template File : ' . $matchedFile);
         return $matchedTemplate;
+    }
+
+    /**
+     * Get all templates in directory
+     *
+     * @return array					list templates
+     * @access private
+     *
+     */
+
+    private function getTemplates() {
+        $templates = array();
+        $directory       = new DirectoryIterator($this->templatesDirectoryPath);
+
+        foreach ($directory as $fileInfo) {
+            if ($fileInfo->getExtension() == 'txt') { //make sure it's a text file
+                $data  = file_get_contents($fileInfo->getPathname());
+                $templates[] = array(
+                    'data' => $data,
+                    'path' => $fileInfo->getPathname()
+                );
+            } //End if current is a txt file
+        } //End foreach loop over direcoty files
+
+        return $templates;
     }
 
     /**
