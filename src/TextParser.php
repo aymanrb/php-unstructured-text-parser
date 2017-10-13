@@ -23,7 +23,7 @@ class TextParser
 
     /**
      * @param string $templatesDir; The path to the template files directory
-     * @return void
+     * @return boolean
      */
 
     public function __construct($templatesDir = null)
@@ -39,13 +39,13 @@ class TextParser
      *
      * @param String $templatesDir; The path to the template files directory
      * @return void
-     *
+     * @throws \Exception
      */
 
-    public function setTemplatesDir($templatesDir)
+    protected function setTemplatesDir($templatesDir)
     {
         if (empty($templatesDir) || !is_dir($templatesDir)) {
-            $this->logger->error('Invalid templates directory provided');
+            throw new \Exception('Invalid templates directory provided');
         }
 
         $this->templatesDirectoryPath = $templatesDir;

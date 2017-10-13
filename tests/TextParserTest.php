@@ -1,20 +1,15 @@
 <?php
 
-/**
- * Text Parser Class PHP Unit Test Cases
- *
- * A phpunit test cases class to test the main PHP TextParser class
- *
- */
-
-namespace Test;
+namespace aymanrb\UnstructuredTextParser\Tests;
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
 use aymanrb\UnstructuredTextParser\TextParser;
 use PHPUnit\Framework\TestCase;
+use Exception;
 
 class TextParserTest extends TestCase {
+
 
     /**
      * @covers              TextParser::__construct
