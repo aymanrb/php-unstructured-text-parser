@@ -40,7 +40,7 @@ $ git clone https://github.com/aymanrb/php-unstructured-text-parser.git
 
 
 
-[Usage example](https://github.com/aymanrb/php-unstructured-text-parser/blob/master/Examples/run.php)
+[Usage example](https://github.com/aymanrb/php-unstructured-text-parser/blob/master/examples/run.php)
 ----------
 ```php
 <?php
