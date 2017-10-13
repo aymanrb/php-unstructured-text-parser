@@ -11,16 +11,14 @@ About this Class
 This is a PHP Class to help extract text out of documents that are not structured in a processing friendly way. When you want to parse text out of form generated emails for example you can create a template matching the expected incoming mail format while specifying the variable text elements and leave the rest for the class to extract your preformatted variables out of the incoming mails' body text.
 
 Useful when you want to parse data out of:
-* Web Pages / HTML documents
 * Emails generated from web forms
 * Documents with definable templates / expressions
-
 
 **Note:** When too many templates are added to the specified templates directory it slows the parsing process in a noticeable manner. This happens since the class runs over all the template files and compares it with the passed text to decide on the most suitable template for parsing.
 
 Current Version
 ----------
-1.0.2-beta
+1.1.0-beta
 
 
 Installation
@@ -44,18 +42,19 @@ $ git clone https://github.com/aymanrb/php-unstructured-text-parser.git
 ----------
 ```php
 <?php
-require_once('src/TextParserClass.php');
+include_once __DIR__ . '/../vendor/autoload.php';
+
+use aymanrb\UnstructuredTextParser\TextParser;
 
 try{
 	$parser = new TextParser('/path/to/templatesDirectory');
 
 	$textToParse = 'Text to be parsed fetched from a file, mail, web service, or even added directly to the a string variable like this';
-	echo "<pre>";
-		print_r($parser->parseText($textToParse));
-	echo "</pre>";
+	
+	print_r($parser->parseText($textToParse));
 	
 }catch (Exception $e) {
-    echo '<b>Error:</b> ' . $e->getMessage();
+    echo 'Error' . $e->getMessage();
 }
 ```
 

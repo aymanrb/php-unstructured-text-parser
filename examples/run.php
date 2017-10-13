@@ -1,23 +1,25 @@
 <?php
-require_once('../src/TextParserClass.php');
+include_once __DIR__ . '/../vendor/autoload.php';
 
-try{
-	$parser = new TextParser('templates');
+use aymanrb\UnstructuredTextParser\TextParser;
 
-	$parser->setLogFile('Logs/parser.log');
+try {
+    $parser = new TextParser(__DIR__ . '/templates');
 
-	$textFiles = new DirectoryIterator('test_txt_files');
+    $textFiles = new DirectoryIterator(__DIR__ . '/test_txt_files');
 
-	foreach($textFiles as $txtObj){
-		if($txtObj->getExtension() == 'txt'){
-			echo '<h1>' . $txtObj->getFilename() . '</h1>';
-			$text = file_get_contents($txtObj->getPathname());
+    foreach ($textFiles as $txtFileObj) {
+        if ($txtFileObj->getExtension() == 'txt') {
+            echo $txtFileObj->getFilename() . PHP_EOL;
 
-			echo "<pre>";
-				print_r($parser->parseText($text));
-			echo "</pre>";
-		}
-	}
-}catch (Exception $e) {
-    echo '<h1>Caught exception:</h1>' . $e->getMessage();
+            echo print_r(
+                $parser->parseText(
+                    file_get_contents($txtFileObj->getPathname())
+                )
+            );
+        }
+    }
+
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
