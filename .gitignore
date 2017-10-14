@@ -1,4 +1,43 @@
+# IDEA Ignores #
+################
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+local.properties
 
-Examples/Logs/*
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+vendor/
 
+# Logs and databases #
+######################
+log/
+*.log
+*.sql
+*.sqlite
+
+# OS files #
+######################
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Project Specific #
+######################
+examples/Logs/*
+
+# Git Directories #
+######################
 !empty
+!.gitkeep
