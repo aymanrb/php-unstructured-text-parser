@@ -4,6 +4,7 @@
     "keywords": [
         "text parser", "extract data", "php parser"
     ],
+    "version": "1.1.0-beta",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -19,10 +20,21 @@
         "issues": "https://github.com/aymanrb/php-unstructured-text-parser/issues",
         "source": "https://github.com/aymanrb/php-unstructured-text-parser"
     },
+    "autoload": {
+        "psr-4": {
+            "aymanrb\\UnstructuredTextParser\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "aymanrb\\UnstructuredTextParser\\Tests\\": "tests/"
+        }
+    },
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.6.0",
+        "monolog/monolog": "^1.23"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.2.*"
+        "phpunit/phpunit": "^5.0"
     }
 }

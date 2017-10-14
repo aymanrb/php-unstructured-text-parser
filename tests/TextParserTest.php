@@ -1,17 +1,15 @@
 <?php
-/**
- * Text Parser Class PHP Unit Test Cases
- *
- * A php unit test cases class to test against the main PHP Text Parser class
- *
- * @author  Ayman R. Bedair <http://www.aymanrb.com>
- *
- */
 
-//Include the main class to test against
-require_once(__DIR__ . '/../src/TextParserClass.php');
+namespace aymanrb\UnstructuredTextParser\Tests;
 
-class TextParserTest extends PHPUnit_Framework_TestCase {
+include_once __DIR__ . '/../vendor/autoload.php';
+
+use aymanrb\UnstructuredTextParser\TextParser;
+use PHPUnit\Framework\TestCase;
+use Exception;
+
+class TextParserTest extends TestCase {
+
 
     /**
      * @covers              TextParser::__construct
@@ -71,18 +69,4 @@ class TextParserTest extends PHPUnit_Framework_TestCase {
   		$this->assertEquals($parsedValues['country'], htmlspecialchars($parsedValues['country'])); //Make sure no html scripts are returned
   		$this->assertEquals('2', $parsedValues['children']); //Make sure data is trimed on return
   	}
-
-
-    /**
-     * @covers              TextParser::__construct
-     * @uses                TextParser::setTemplatesDir
-     * @uses                TextParser::setLogFile
-     * @expectedException   Exception
-     */
-    public function testLoggingError(){
-        $parser = new TextParser(__DIR__ . '/templates');
-        $parser->setLogFile('noFile.log');
-    }
-
-    //TODO:MORE TESTS ON LOG METHODS HERE
 }
