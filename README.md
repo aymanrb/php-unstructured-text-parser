@@ -14,23 +14,21 @@ Useful when you want to parse data out of:
 * Emails generated from web forms
 * Documents with definable templates / expressions
 
-**Note:** When too many templates are added to the specified templates directory it slows the parsing process in a noticeable manner. This happens since the class runs over all the template files and compares it with the passed text to decide on the most suitable template for parsing.
-
 Current Version
 ----------
-1.1.0-beta
+1.2.0
 
 
 Installation
 ----------
 
-1- Using [composer](https://getcomposer.org/) simply run the following:
+#### 1- Using [composer](https://getcomposer.org/) simply run the following:
 
 ```shell
 $ composer require aymanrb/php-unstructured-text-parser
 ```
 
-2- Clone / Copy the files from this repository to you local libs directory:
+####2- Clone / Copy the files from this repository to your local libs directory:
 
 ```shell
 $ git clone https://github.com/aymanrb/php-unstructured-text-parser.git
@@ -44,18 +42,13 @@ $ git clone https://github.com/aymanrb/php-unstructured-text-parser.git
 <?php
 include_once __DIR__ . '/../vendor/autoload.php';
 
-use aymanrb\UnstructuredTextParser\TextParser;
+$parser = new aymanrb\UnstructuredTextParser\TextParser('/path/to/templatesDirectory');
 
-try{
-	$parser = new TextParser('/path/to/templatesDirectory');
+$textToParse = 'Text to be parsed fetched from a file, mail, web service, or even added directly to the a string variable like this';
 
-	$textToParse = 'Text to be parsed fetched from a file, mail, web service, or even added directly to the a string variable like this';
-	
-	print_r($parser->parseText($textToParse));
-	
-}catch (Exception $e) {
-    echo 'Error' . $e->getMessage();
-}
+print_r($parser->parseText($textToParse)); //performs brute force parsing against all available templates
+
+print_r($parser->parseText($textToParse, true)); //slower, performs a similarity check on available templates before parsing
 ```
 
 Parsing Procedure
@@ -108,5 +101,3 @@ Array(
     'Comment' => 'Some text goes here'
 )
 ```
-
-*"Works perfectly with plain text, HTML tags, special characters and anything else you may wish"*

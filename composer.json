@@ -2,9 +2,9 @@
     "name": "aymanrb/php-unstructured-text-parser",
     "description": "A PHP Class to help extract text out of documents that are not structured in a processing friendly manner",
     "keywords": [
-        "text parser", "extract data", "php parser"
+        "text parser", "extract data", "php parser", "templates parsing", "regex parsing", "form parsing", "text parse"
     ],
-    "version": "1.1.0-beta",
+    "version": "1.2.0",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -13,7 +13,13 @@
             "email": "aymanrb@gmail.com",
             "homepage": "http://www.aymanrb.com",
             "role": "Developer"
+        },
+        {
+            "name": "Pavel",
+            "homepage": "http://www.aisamiery.ru",
+            "role": "Developer"
         }
+
     ],
     "homepage": "https://github.com/aymanrb/php-unstructured-text-parser",
     "support": {

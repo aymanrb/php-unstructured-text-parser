@@ -13,7 +13,7 @@ class TextParserTest extends TestCase {
 
     /**
      * @covers              TextParser::__construct
-     * @uses                TextParser::setTemplatesDir
+     * @uses                TextParser::createTemplatesDirInterator
      * @expectedException   Exception
      */
     public function testExceptionIsRaisedForInvalidConstructorArguments(){
@@ -24,7 +24,7 @@ class TextParserTest extends TestCase {
     /**
      * @covers	TextParser::parseText
      * @uses    TextParser::__construct
-     * @uses    TextParser::setTemplatesDir
+     * @uses    TextParser::createTemplatesDirInterator
      * @uses    TextParser::findTemplate
      * @uses    TextParser::prepareTemplate
      * @uses    TextParser::prepareText
@@ -39,7 +39,7 @@ class TextParserTest extends TestCase {
     /**
      * @covers	TextParser::parseText
      * @uses    TextParser::__construct
-     * @uses    TextParser::setTemplatesDir
+     * @uses    TextParser::createTemplatesDirInterator
      * @uses    TextParser::findTemplate
      * @uses    TextParser::prepareTemplate
      * @uses    TextParser::prepareText
@@ -55,7 +55,7 @@ class TextParserTest extends TestCase {
     /**
      * @covers	TextParser::parseText
      * @uses    TextParser::__construct
-     * @uses    TextParser::setTemplatesDir
+     * @uses    TextParser::createTemplatesDirInterator
      * @uses    TextParser::findTemplate
      * @uses    TextParser::prepareTemplate
      * @uses    TextParser::prepareText
