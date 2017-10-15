@@ -23,7 +23,7 @@ class TextParser
         $this->logger = new Logger('text-parser');
         $this->logger->pushHandler(new StreamHandler('logs/text-parser.log', Logger::DEBUG));
 
-        $this->createTemplatesDirInterator($templatesDir);
+        $this->createTemplatesDirIterator($templatesDir);
     }
 
     /**
@@ -31,13 +31,12 @@ class TextParser
      *
      * @param string $text; The text provided by the user for parsing
      * @param boolean $findMatchingTemplate; A boolean to enable the similarity match against templates before parsing (slower)
-     * @return array|null The matched data array or null on unmatched text
+     * @return array The matched data array or null on unmatched text
      *
      */
     public function parseText($text, $findMatchingTemplate = false)
     {
         $this->logger->info(sprintf('Parsing: %s', $text));
-        $extractedData = null;
 
         $text = $this->prepareText($text);
         $matchedTemplates = $this->getTemplates($text, $findMatchingTemplate);
@@ -49,13 +48,13 @@ class TextParser
             $extractedData = $this->extractData($text, $templatePattern);
 
             if ($extractedData) {
-                break;
+                $this->logger->info(sprintf('Data extracted: %s', json_encode($extractedData)));
+
+                return $extractedData;
             }
         }
 
-        $this->logger->info(sprintf('Data extracted: %s', json_encode($extractedData)));
-
-        return $extractedData;
+        return null;
     }
 
     /**
@@ -86,7 +85,7 @@ class TextParser
      * @throws \Exception
      */
 
-    protected function createTemplatesDirInterator($templatesDir)
+    protected function createTemplatesDirIterator($templatesDir)
     {
         if (empty($templatesDir) || !is_dir($templatesDir)) {
             throw new \Exception('Invalid templates directory provided');

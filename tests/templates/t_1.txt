@@ -1,0 +1,8 @@
+Sent to customer service from {%source%}
+==========================================
+Ref No. : {%reference%}
+E-mail address :{%mail1%}
+Phone No. :{%phone%}
+Name :{%customer_name%}
+Country :{%country%}
+Comment :{%more_data%}
