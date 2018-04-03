@@ -95,7 +95,7 @@ The output of a successful parsing job would be:
 
 ```
 Array(
-	'name_of_receiver' => 'GitHub-er',
+    'name_of_receiver' => 'GitHub-er',
     'sender_name' => 'Pet Cat',
     'sender_email' => 'email@example.com',
     'Comment' => 'Some text goes here'
