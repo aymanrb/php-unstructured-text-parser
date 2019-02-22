@@ -16,7 +16,7 @@ class TextParser
 
 
     /**
-     * @param string $templatesDir; The path to the template files directory
+     * @param string $templatesDir ; The path to the template files directory
      */
     public function __construct($templatesDir)
     {
@@ -29,8 +29,8 @@ class TextParser
     /**
      * The call for action method, this is the parse job initiator
      *
-     * @param string $text; The text provided by the user for parsing
-     * @param boolean $findMatchingTemplate; A boolean to enable the similarity match against templates before parsing (slower)
+     * @param string $text ; The text provided by the user for parsing
+     * @param boolean $findMatchingTemplate ; A boolean to enable the similarity match against templates before parsing (slower)
      * @return array The matched data array or null on unmatched text
      *
      */
@@ -60,8 +60,8 @@ class TextParser
     /**
      * Returns array of available template patterns or performs a similarity match (slower) to return best match template
      *
-     * @param string $text; The text provided by the user for parsing
-     * @param boolean $findMatchingTemplate; A boolean to enable the similarity match against templates before parsing
+     * @param string $text ; The text provided by the user for parsing
+     * @param boolean $findMatchingTemplate ; A boolean to enable the similarity match against templates before parsing
      * @return array
      */
     protected function getTemplates($text, $findMatchingTemplate)
@@ -72,7 +72,9 @@ class TextParser
 
         $templates = [];
         foreach ($this->directoryIterator as $fileInfo) {
-            if(!is_dir($fileInfo->getPathname()))$templates[$fileInfo->getPathname()] = file_get_contents($fileInfo->getPathname());
+            if (!is_dir($fileInfo->getPathname())) {
+                $templates[$fileInfo->getPathname()] = file_get_contents($fileInfo->getPathname());
+            }
         }
 
         return $templates;
@@ -81,7 +83,7 @@ class TextParser
     /**
      * Sets the class property $templatesDirectoryPath
      *
-     * @param string $templatesDir; The path to the template files directory
+     * @param string $templatesDir ; The path to the template files directory
      * @throws \Exception
      */
 
@@ -97,7 +99,7 @@ class TextParser
     /**
      * Prepares the provided text for parsing by escaping known characters and removing exccess whitespaces
      *
-     * @param string $txt; The text provided by the user for parsing
+     * @param string $txt ; The text provided by the user for parsing
      * @return string; The prepared clean text
      *
      */
@@ -112,7 +114,7 @@ class TextParser
     /**
      * Prepares the matched template text for parsing by escaping known characters and removing excess whitespaces
      *
-     * @param string $templateTxt; The matched template contents
+     * @param string $templateTxt ; The matched template contents
      * @return string; The prepared clean template pattern
      *
      */
@@ -136,8 +138,8 @@ class TextParser
     /**
      * Extracts the named variables values from within the text based on the provided template
      *
-     * @param string $text; The prepared text provided by the user for parsing
-     * @param string $template; The template regex pattern from the matched template
+     * @param string $text ; The prepared text provided by the user for parsing
+     * @param string $template ; The template regex pattern from the matched template
      * @return array|bool; The matched data array or false on unmatched text
      *
      */
@@ -160,7 +162,7 @@ class TextParser
     /**
      * Removes unwanted stuff from the data array like html tags and extra spaces
      *
-     * @param mixed $matches; Array with matched strings
+     * @param mixed $matches ; Array with matched strings
      * @return array; The clean data array
      *
      */
@@ -185,7 +187,7 @@ class TextParser
     /**
      * Iterates through the templates directory to find the closest template pattern that matches the provided text
      *
-     * @param string $text; The text provided by the user for parsing
+     * @param string $text ; The text provided by the user for parsing
      * @return array; The matched template contents with its path as a key or empty array if none matched
      *
      */
@@ -197,7 +199,8 @@ class TextParser
         foreach ($this->directoryIterator as $fileInfo) {
             $templateContent = file_get_contents($fileInfo->getPathname());
 
-            similar_text($text, $templateContent, $matchPercentage); //Compare template against text to decide on similarity percentage
+            similar_text($text, $templateContent,
+                $matchPercentage); //Compare template against text to decide on similarity percentage
 
             if ($matchPercentage > $maxMatch) {
                 $this->logger->debug(sprintf('Template "%s" is a best match for now', $fileInfo->getPathname()));
