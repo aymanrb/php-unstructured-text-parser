@@ -72,7 +72,7 @@ class TextParser
 
         $templates = [];
         foreach ($this->directoryIterator as $fileInfo) {
-            $templates[$fileInfo->getPathname()] = file_get_contents($fileInfo->getPathname());
+            if(!is_dir($fileInfo->getPathname()))$templates[$fileInfo->getPathname()] = file_get_contents($fileInfo->getPathname());
         }
 
         return $templates;
