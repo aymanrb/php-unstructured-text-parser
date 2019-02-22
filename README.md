@@ -16,7 +16,7 @@ Useful when you want to parse data out of:
 
 Current Version
 ----------
-1.2.0
+1.2.1
 
 
 Installation
@@ -28,7 +28,7 @@ Installation
 $ composer require aymanrb/php-unstructured-text-parser
 ```
 
-####2- Clone / Copy the files from this repository to your local libs directory:
+#### 2- Clone / Copy the files from this repository to your local libs directory:
 
 ```shell
 $ git clone https://github.com/aymanrb/php-unstructured-text-parser.git
@@ -46,9 +46,11 @@ $parser = new aymanrb\UnstructuredTextParser\TextParser('/path/to/templatesDirec
 
 $textToParse = 'Text to be parsed fetched from a file, mail, web service, or even added directly to the a string variable like this';
 
-print_r($parser->parseText($textToParse)); //performs brute force parsing against all available templates
+//performs brute force parsing against all available templates
+print_r($parser->parseText($textToParse));
 
-print_r($parser->parseText($textToParse, true)); //slower, performs a similarity check on available templates before parsing
+//slower, performs a similarity check on available templates before parsing
+print_r($parser->parseText($textToParse, true)); 
 ```
 
 Parsing Procedure
