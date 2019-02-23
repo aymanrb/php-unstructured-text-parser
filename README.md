@@ -16,7 +16,7 @@ Useful when you want to parse data out of:
 
 Current Version
 ----------
-1.2.1
+1.2.2
 
 
 Installation
