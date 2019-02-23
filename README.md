@@ -14,11 +14,6 @@ Useful when you want to parse data out of:
 * Emails generated from web forms
 * Documents with definable templates / expressions
 
-Current Version
-----------
-1.2.2
-
-
 Installation
 ----------
 

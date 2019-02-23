@@ -10,7 +10,12 @@
     "form parsing",
     "text parse"
   ],
-  "version": "1.2.2",
+  "config": {
+    "platform": {
+      "php": "5.6.0"
+    }
+  },
+  "version": "1.2.3",
   "type": "library",
   "license": "MIT",
   "authors": [
