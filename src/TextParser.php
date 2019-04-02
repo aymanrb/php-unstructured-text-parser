@@ -19,9 +19,9 @@ class TextParser
     /**
      * @param string $templatesDir ; The path to the template files directory
      */
-    public function __construct($templatesDir, $logger = null)
+    public function __construct($templatesDir, LoggerInterface $logger = null)
     {
-        if(!($logger instanceof Logger)) {
+        if(empty($logger)) {
             $this->logger = new Logger('text-parser');
             $this->logger->pushHandler(new StreamHandler('logs/text-parser.log', Logger::DEBUG));
         }
