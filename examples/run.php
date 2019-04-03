@@ -2,10 +2,14 @@
 include_once __DIR__ . '/../vendor/autoload.php';
 
 use aymanrb\UnstructuredTextParser\TextParser;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 try {
-    $parser = new TextParser(__DIR__ . '/templates');
+    $logger = new Logger('text-parser');
+    $logger->pushHandler(new StreamHandler('logs/text-parser.log', Logger::DEBUG));
 
+    $parser = new TextParser(__DIR__ . '/templates', $logger);
     $textFiles = new DirectoryIterator(__DIR__ . '/test_txt_files');
 
     foreach ($textFiles as $txtFileObj) {
