@@ -6,6 +6,7 @@ use DirectoryIterator;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 
 class TextParser
 {
