@@ -3,39 +3,30 @@
 namespace aymanrb\UnstructuredTextParser;
 
 use DirectoryIterator;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 class TextParser
 {
     use LoggerAwareTrait;
+
     /** @var DirectoryIterator; Templates Directory Iterator */
     protected $directoryIterator;
 
-
-
-
     /**
      * @param string $templatesDir ; The path to the template files directory
+     * @param LoggerInterface $logger ; A logger instance implementing the PSR-3 Logger interface
      */
     public function __construct($templatesDir, LoggerInterface $logger = null)
     {
-        if(empty($logger)) {
-            $this->logger = new Logger('text-parser');
-            $this->logger->pushHandler(new StreamHandler('logs/text-parser.log', Logger::DEBUG));
-        }
-        else
-        {
-            $this->logger = $logger;
+        if (empty($logger)) {
+            $logger = new NullLogger();
         }
 
-
+        $this->setLogger($logger);
         $this->createTemplatesDirIterator($templatesDir);
     }
-
-
 
     /**
      * The call for action method, this is the parse job initiator
