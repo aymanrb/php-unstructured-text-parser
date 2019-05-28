@@ -8,7 +8,7 @@ Unstructured Text Parser [PHP]
 
 About this Class
 ----------------------------------
-This is a PHP Class to help extract text out of documents that are not structured in a processing friendly way. When you want to parse text out of form generated emails for example you can create a template matching the expected incoming mail format while specifying the variable text elements and leave the rest for the class to extract your preformatted variables out of the incoming mails' body text.
+This is a small PHP library to help extract text out of documents that are not structured in a processing friendly format. When you want to parse text out of form generated emails for example you can create a template matching the expected incoming mail format while specifying the variable text elements and leave the rest for the class to extract your preformatted variables out of the incoming mails' body text.
 
 Useful when you want to parse data out of:
 * Emails generated from web forms
@@ -20,15 +20,8 @@ Installation
 #### 1- Using [composer](https://getcomposer.org/) simply run the following:
 
 ```shell
-$ composer require aymanrb/php-unstructured-text-parser
+$ composer require aymanrb/php-unstructured-text-parser:2.*
 ```
-
-#### 2- Clone / Copy the files from this repository to your local libs directory:
-
-```shell
-$ git clone https://github.com/aymanrb/php-unstructured-text-parser.git
-```
-
 
 
 [Usage example](https://github.com/aymanrb/php-unstructured-text-parser/blob/master/examples/run.php)
@@ -44,7 +37,7 @@ $textToParse = 'Text to be parsed fetched from a file, mail, web service, or eve
 //performs brute force parsing against all available templates
 print_r($parser->parseText($textToParse));
 
-//slower, performs a similarity check on available templates before parsing
+//slower, performs a similarity check on available templates to select the most matching template before parsing
 print_r($parser->parseText($textToParse, true)); 
 ```
 
@@ -74,13 +67,13 @@ Best Regards
 Admin
 ```
 
-Then your Template file (``example_template.txt``) should be:
+Your Template file (``example_template.txt``) could be something like:
 
 ```
-Hi {%name_of_receiver%},
+Hi {%nameOfRecipient%},
 If you wish to parse message coming from a website that states info like:
-Name: {%sender_name%}
-E-Mail: {%sender_email%}
+Name: {%senderName%}
+E-Mail: {%senderEmail%}
 Comment: {%comment%}
 
 Thank You,
@@ -92,9 +85,9 @@ The output of a successful parsing job would be:
 
 ```
 Array(
-    'name_of_receiver' => 'GitHub-er',
-    'sender_name' => 'Pet Cat',
-    'sender_email' => 'email@example.com',
-    'Comment' => 'Some text goes here'
+    'nameOfRecipient' => 'GitHub-er',
+    'senderName' => 'Pet Cat',
+    'senderEmail' => 'email@example.com',
+    'comment' => 'Some text goes here'
 )
 ```
