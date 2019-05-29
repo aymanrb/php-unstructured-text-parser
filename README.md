@@ -6,9 +6,11 @@ Unstructured Text Parser [PHP]
 [![License](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/license.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 
 
-About this Class
+About Unstructured Text Parser
 ----------------------------------
-This is a small PHP library to help extract text out of documents that are not structured in a processing friendly format. When you want to parse text out of form generated emails for example you can create a template matching the expected incoming mail format while specifying the variable text elements and leave the rest for the class to extract your preformatted variables out of the incoming mails' body text.
+This is a small PHP library to help extract text out of documents that are not structured in a processing friendly format. 
+When you want to parse text out of form generated emails for example you can create a template matching the expected incoming mail format 
+while specifying the variable text elements and leave the rest for the class to extract your pre-formatted variables out of the incoming mails' body text.
 
 Useful when you want to parse data out of:
 * Emails generated from web forms

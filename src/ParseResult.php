@@ -6,23 +6,34 @@ use aymanrb\UnstructuredTextParser\Exception\InvalidParsedDataKeyException;
 
 class ParseResult
 {
-    private $parsedData = [];
+    private $parsedRawData = [];
 
+    private $appliedTemplateFile;
 
-    public function getParsedData(): array
+    public function getParsedRawData(): array
     {
-        return $this->parsedData;
+        return $this->parsedRawData;
     }
 
-    public function setParsedData(array $parsedData)
+    public function setParsedRawData(array $parsedRawData): void
     {
-        $this->parsedData = $parsedData;
+        $this->parsedRawData = $parsedRawData;
         $this->cleanData();
     }
 
-    public function keyExists($key)
+    public function getAppliedTemplateFile(): ?string
     {
-        return array_key_exists($key, $this->parsedData);
+        return $this->appliedTemplateFile;
+    }
+
+    public function setAppliedTemplateFile($appliedTemplateFile): void
+    {
+        $this->appliedTemplateFile = $appliedTemplateFile;
+    }
+
+    public function keyExists($key): bool
+    {
+        return array_key_exists($key, $this->parsedRawData);
     }
 
     public function __get(string $resultDataKey)
@@ -31,13 +42,13 @@ class ParseResult
             throw new InvalidParsedDataKeyException('Undefined results key: ' . $resultDataKey);
         }
 
-        return $this->parsedData[$resultDataKey];
+        return $this->parsedRawData[$resultDataKey];
     }
 
-    private function cleanData()
+    private function cleanData(): void
     {
-        foreach ($this->parsedData as $key => $value) {
-            $this->parsedData[$key] = $this->cleanElement($value);
+        foreach ($this->parsedRawData as $key => $value) {
+            $this->parsedRawData[$key] = $this->cleanElement($value);
         }
     }
 

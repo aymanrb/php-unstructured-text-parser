@@ -11,14 +11,15 @@ try {
         if ($txtFileObj->getExtension() == 'txt') {
             echo $txtFileObj->getFilename() . PHP_EOL;
 
-            print_r(
-                $parser->parseText(
-                    file_get_contents($txtFileObj->getPathname())
-                )
-            );
+            $parseResults = $parser->parseText(file_get_contents($txtFileObj->getPathname()));
+
+            print_r($parseResults->getParsedRawData());
+
+            if ($parseResults->getAppliedTemplateFile()) {
+                echo 'Matched Template: ' . $parseResults->getAppliedTemplateFile() . PHP_EOL;
+            }
         }
     }
-
 } catch (Exception $e) {
     echo $e->getMessage();
 }
