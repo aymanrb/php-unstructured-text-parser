@@ -21,17 +21,7 @@ class TemplatesHelper
             return $this->findTemplate($text);
         }
 
-        $templates = [];
-        foreach ($this->directoryIterator as $fileInfo) {
-            if (!is_file($fileInfo->getPathname())) {
-                continue;
-            }
-
-            $templateContent = file_get_contents($fileInfo->getPathname());
-            $templates[$fileInfo->getPathname()] = $this->prepareTemplate($templateContent);
-        }
-
-        return $templates;
+        return $this->getAllValidTemplates();
     }
 
     private function createTemplatesDirIterator(string $iterableDirectoryPath): \DirectoryIterator
@@ -63,6 +53,21 @@ class TemplatesHelper
         }
 
         return $matchedTemplate;
+    }
+
+    private function getAllValidTemplates(): array
+    {
+        $templates = [];
+        foreach ($this->directoryIterator as $fileInfo) {
+            if (!is_file($fileInfo->getPathname())) {
+                continue;
+            }
+
+            $templateContent = file_get_contents($fileInfo->getPathname());
+            $templates[$fileInfo->getPathname()] = $this->prepareTemplate($templateContent);
+        }
+
+        return $templates;
     }
 
     private function prepareTemplate(string $templateText): string

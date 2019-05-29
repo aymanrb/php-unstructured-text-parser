@@ -29,7 +29,7 @@ class TextParser
         $this->parseResults = new ParseResult();
     }
 
-    public function parseText(string $text, bool $findMatchingTemplate = false): array
+    public function parseText(string $text, bool $findMatchingTemplate = false): ParseResult
     {
         $this->logger->info(sprintf('Parsing: %s', $text));
 
@@ -39,12 +39,14 @@ class TextParser
         foreach ($parsableTemplates as $templatePath => $templatePattern) {
             $this->logger->debug(sprintf('Parsing against template: %s', $templatePath));
 
-            $this->extractData($text, $templatePattern);
+            if ($this->extractData($text, $templatePattern)) {
+                $this->parseResults->setAppliedTemplateFile($templatePath);
+            }
         }
 
-        $this->logger->info(sprintf('Data extracted: %s', json_encode($this->parseResults->getParsedData())));
+        $this->logger->info(sprintf('Data extracted: %s', json_encode($this->parseResults->getParsedRawData())));
 
-        return $this->parseResults->getParsedData();
+        return $this->parseResults;
     }
 
     private function prepareText(string $text): string
@@ -55,7 +57,7 @@ class TextParser
         return trim($text);
     }
 
-    private function extractData(string $text, string $template): void
+    private function extractData(string $text, string $template): bool
     {
         //Extract the text based on the provided template using REGEX
         preg_match('/' . $template . '/s', $text, $matches);
@@ -65,9 +67,11 @@ class TextParser
         $matches = array_intersect_key($matches, array_flip($keys));
 
         if (empty($matches)) {
-            return;
+            return false;
         }
 
-        $this->parseResults->setParsedData($matches);
+        $this->parseResults->setParsedRawData($matches);
+
+        return true;
     }
 }
