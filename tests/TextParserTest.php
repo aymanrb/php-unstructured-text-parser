@@ -20,26 +20,26 @@ class TextParserTest extends TestCase
     public function testTextParsingFailure()
     {
         $parser = new TextParser(__DIR__ . '/templates');
-        $this->assertEmpty(
-            $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/noTemplate.txt'))
-        );
+        $parseResults = $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/noTemplate.txt'));
+
+        $this->assertEmpty($parseResults->getParsedRawData());
     }
 
     public function testTextParsingSuccess()
     {
         $parser = new TextParser(__DIR__ . '/templates');
         $parsedValues = $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/success.txt'));
-        $this->assertEquals(13, count($parsedValues));
+        $this->assertEquals(13, $parsedValues->countResults());
     }
 
-    public function testTextParsingWithSimilarityCheckSuccess()
+    public function testTextParsingWithSimilarityCheckSuccess() //@TODO: make this match a different template
     {
         $parser = new TextParser(__DIR__ . '/templates');
         $parsedValues = $parser->parseText(
             file_get_contents(__DIR__ . '/test_txt_files/success.txt'),
             true
         );
-        $this->assertEquals(13, count($parsedValues));
+        $this->assertEquals(13, $parsedValues->countResults());
     }
 
     public function testTextParsingReturns()
@@ -49,15 +49,16 @@ class TextParserTest extends TestCase
 
         //Make sure no html scripts are returned
         $this->assertEquals(
-            $parsedValues['country'],
-            htmlspecialchars($parsedValues['country'])
+            $parsedValues->get('country'),
+            htmlspecialchars($parsedValues->get('country'))
         );
         //Make sure data is trimmed on return
-        $this->assertEquals('2', $parsedValues['children']);
+        $this->assertEquals('2', $parsedValues->get('children'));
+
         //Make sure data format and whitespaces are preserved
         $this->assertEquals(
             '11 - 10 - 2014',
-            $parsedValues['arrival_date']
+            $parsedValues->get('arrival_date')
         );
     }
 }
