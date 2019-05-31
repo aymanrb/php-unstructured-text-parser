@@ -18,11 +18,17 @@ Useful when you want to parse data out of:
 
 Installation
 ----------
+PHP Unstructured Text Parser is available on [Packagist](https://packagist.org/packages/aymanrb/php-unstructured-text-parser) (using semantic versioning), and installation via [Composer](https://getcomposer.org) is recommended. 
+Add the following line to your `composer.json` file:
 
-#### 1- Using [composer](https://getcomposer.org/) simply run the following:
+```json
+"aymanrb/php-unstructured-text-parser": "~2.0"
+```
 
-```shell
-$ composer require aymanrb/php-unstructured-text-parser:2.*
+or run
+
+```sh
+composer require aymanrb/php-unstructured-text-parser
 ```
 
 
@@ -37,10 +43,15 @@ $parser = new aymanrb\UnstructuredTextParser\TextParser('/path/to/templatesDirec
 $textToParse = 'Text to be parsed fetched from a file, mail, web service, or even added directly to the a string variable like this';
 
 //performs brute force parsing against all available templates
-print_r($parser->parseText($textToParse));
+$parseResults = $parser->parseText($textToParse);
+print_r($parseResults->getParsedRawData());
 
 //slower, performs a similarity check on available templates to select the most matching template before parsing
-print_r($parser->parseText($textToParse, true)); 
+print_r(
+    $parser
+        ->parseText($textToParse, true)
+        ->getParsedRawData()
+);
 ```
 
 Parsing Procedure
