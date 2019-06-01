@@ -105,3 +105,18 @@ Array(
     'comment' => 'Some text goes here'
 )
 ```
+
+Upgrading from v1.3 to v2.0
+------------------------
+Version 2.0 is more or less a refactored copy of version 1.x of the library and provides the exact same functionality.
+There is just one slight difference in the results returned. It's now a parsed data object instead of an array.
+To get the results as an array like it used to be in v1.x simply call "*getParsedRawData()*" on the returned object.
+
+```php
+<?php
+//ParseText used to return array in 1.x
+$extractedArray = $parser->parseText($textToParse);
+
+//In 2.x you need to do the following if you want an array
+$extractedArray = $parser->parseText($textToParse)->getParsedRawData();
+```

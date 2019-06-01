@@ -1,6 +1,6 @@
 {
   "name": "aymanrb/php-unstructured-text-parser",
-  "description": "A PHP Class to help extract text out of documents that are not structured in a processing friendly manner",
+  "description": "A PHP library to help extract text out of text documents",
   "keywords": [
     "text parser",
     "extract data",
@@ -15,7 +15,7 @@
       "php": "7.3.0"
     }
   },
-  "version": "1.3.0",
+  "version": "2.0.0",
   "type": "library",
   "license": "MIT",
   "authors": [
