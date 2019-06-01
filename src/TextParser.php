@@ -2,6 +2,7 @@
 
 namespace aymanrb\UnstructuredTextParser;
 
+use aymanrb\UnstructuredTextParser\Exception\InvalidParseFileException;
 use aymanrb\UnstructuredTextParser\Helper\TemplatesHelper;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
@@ -31,6 +32,10 @@ class TextParser
 
     public function parseFileContent(string $filePath, bool $findMatchingTemplate = false): ParseResult
     {
+        if (!is_file($filePath)) {
+            throw new InvalidParseFileException($filePath);
+        }
+
         return $this->parseText(file_get_contents($filePath), $findMatchingTemplate);
     }
 
