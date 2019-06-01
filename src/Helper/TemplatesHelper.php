@@ -15,7 +15,7 @@ class TemplatesHelper
         $this->directoryIterator = $this->createTemplatesDirIterator($templatesDir);
     }
 
-    public function getTemplates(string $text, bool $findMatchingTemplate): array
+    public function getTemplates(string $text, bool $findMatchingTemplate = false): array
     {
         if ($findMatchingTemplate) {
             return $this->findTemplate($text);
