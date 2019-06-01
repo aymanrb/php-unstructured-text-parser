@@ -4,6 +4,7 @@ namespace aymanrb\UnstructuredTextParser\Tests;
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
+use aymanrb\UnstructuredTextParser\Exception\InvalidParseFileException;
 use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
 use aymanrb\UnstructuredTextParser\TextParser;
 use PHPUnit\Framework\TestCase;
@@ -14,13 +15,13 @@ class TextParserTest extends TestCase
     public function testExceptionIsRaisedForInvalidConstructorArguments()
     {
         $this->expectException(InvalidTemplatesDirectoryException::class);
-        new TextParser(__DIR__ . '/DirectoryThatNeverExists');
+        new TextParser(__DIR__ . '/DirectoryThatDoesNotExist');
     }
 
     public function testTextParsingFailure()
     {
         $parser = $this->getTemplatesParser();
-        $parseResults = $parser->parseFileContent(__DIR__ . '/test_txt_files/noMatch.txt');
+        $parseResults = $parser->parseText('Some Text that can not be matched against a template');
 
         $this->assertEmpty($parseResults->getParsedRawData());
     }
@@ -72,7 +73,14 @@ class TextParserTest extends TestCase
         );
     }
 
-    protected function getTemplatesParser(): TextParser
+    public function testParseInvalidFileContentException()
+    {
+        $parser = $this->getTemplatesParser();
+        $this->expectException(InvalidParseFileException::class);
+        $parser->parseFileContent(__DIR__ . '/test_txt_files/unknown.txt');
+    }
+
+    private function getTemplatesParser(): TextParser
     {
         return new TextParser(__DIR__ . '/templates');
     }

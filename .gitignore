@@ -47,3 +47,5 @@ examples/Logs/*
 ######################
 .phpunit.result.cache
 /cache.properties
+tests/_reports/*
+build/logs/*
