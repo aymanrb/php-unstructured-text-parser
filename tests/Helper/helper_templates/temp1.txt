@@ -1,0 +1,3 @@
+<htmlTag>Simple Template 01 {%variable%}</htmlTag>
+
+Multi Line

@@ -41,3 +41,11 @@ examples/Logs/*
 ######################
 !empty
 !.gitkeep
+
+
+# PHP Unit #
+######################
+.phpunit.result.cache
+/cache.properties
+tests/_reports/*
+build/logs/*
