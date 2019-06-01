@@ -20,7 +20,7 @@ class TextParserTest extends TestCase
     public function testTextParsingFailure()
     {
         $parser = new TextParser(__DIR__ . '/templates');
-        $parseResults = $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/noTemplate.txt'));
+        $parseResults = $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/noMatch.txt'));
 
         $this->assertEmpty($parseResults->getParsedRawData());
     }
@@ -28,24 +28,35 @@ class TextParserTest extends TestCase
     public function testTextParsingSuccess()
     {
         $parser = new TextParser(__DIR__ . '/templates');
-        $parsedValues = $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/success.txt'));
+        $parsedValues = $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/t0TemplateMatch.txt'));
         $this->assertEquals(13, $parsedValues->countResults());
     }
 
-    public function testTextParsingWithSimilarityCheckSuccess() //@TODO: make this match a different template
+    public function testSimilarityCheckFalseSelectsFirstMatchTemplateRatherBestFit()
     {
         $parser = new TextParser(__DIR__ . '/templates');
         $parsedValues = $parser->parseText(
-            file_get_contents(__DIR__ . '/test_txt_files/success.txt'),
+            file_get_contents(__DIR__ . '/test_txt_files/webFeedback.html'));
+        $this->assertEquals(1, $parsedValues->countResults());
+    }
+
+    public function testSimilarityCheckTrueSelectsBestFitTemplateRatherThanFirstMatch()
+    {
+        $parser = new TextParser(__DIR__ . '/templates');
+        $parsedValues = $parser->parseText(
+            file_get_contents(__DIR__ . '/test_txt_files/webFeedback.html'),
             true
         );
-        $this->assertEquals(13, $parsedValues->countResults());
+        $this->assertEquals(10, $parsedValues->countResults());
+        $this->assertFalse($parsedValues->keyExists('theWholeMessageMatch'));
+        $this->assertEquals('Mozilla', $parsedValues->get('browserCode'));
+
     }
 
     public function testTextParsingReturns()
     {
         $parser = new TextParser(__DIR__ . '/templates');
-        $parsedValues = $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/success.txt'));
+        $parsedValues = $parser->parseText(file_get_contents(__DIR__ . '/test_txt_files/t0TemplateMatch.txt'));
 
         //Make sure no html scripts are returned
         $this->assertEquals(

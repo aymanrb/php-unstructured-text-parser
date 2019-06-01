@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<body>
+<h1>New Web App Bug / Feedback Received</h1>
+<p>Dear admin,</p>
+<p>Here below are the details we gathered from the user regarding this feedback:</p>
+<h3>Browser Details:</h3>
+<b>appCodeName</b>: {%browserCode%}<br>
+<b>appName</b>: {%browserName%}<br>
+<b>appVersion</b>: {%browserVersion%}<br>
+<b>cookieEnabled</b>: {%cookiesUsed%}<br>
+<b>platform</b>: {%OS%}<br>
+<b>userAgent</b>: {%agent%}
+{%agentLine2%}<br>
+<b>plugins</b>: {%plugins%}<br>
+<hr>
+<h3>Report / Feedback:</h3>
+<b>URL</b>: {%feedbackUrl%}/<br>
+<b>User Note:</b>: {%userFeedbackMessage%}<br>
+
+
+<p>The Web App Team</p>
+<p>Note: This is an automatic notification. Don't reply to this message</p>
+</body>
+</html>
