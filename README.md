@@ -42,7 +42,7 @@ $parser = new aymanrb\UnstructuredTextParser\TextParser('/path/to/templatesDirec
 
 $textToParse = 'Text to be parsed fetched from a file, mail, web service, or even added directly to the a string variable like this';
 
-//performs brute force parsing against all available templates
+//performs brute force parsing against all available templates, returns first match successful parsing
 $parseResults = $parser->parseText($textToParse);
 print_r($parseResults->getParsedRawData());
 

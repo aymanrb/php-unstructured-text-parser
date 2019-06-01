@@ -29,6 +29,11 @@ class TextParser
         $this->parseResults = new ParseResult();
     }
 
+    public function parseFileContent(string $filePath, bool $findMatchingTemplate = false): ParseResult
+    {
+        return $this->parseText(file_get_contents($filePath), $findMatchingTemplate);
+    }
+
     public function parseText(string $text, bool $findMatchingTemplate = false): ParseResult
     {
         $this->logger->info(sprintf('Parsing: %s', $text));
