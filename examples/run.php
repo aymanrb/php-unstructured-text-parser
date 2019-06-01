@@ -11,7 +11,7 @@ try {
         if ($txtFileObj->getExtension() == 'txt') {
             echo $txtFileObj->getFilename() . PHP_EOL;
 
-            $parseResults = $parser->parseText(file_get_contents($txtFileObj->getPathname()));
+            $parseResults = $parser->parseFileContent($txtFileObj->getPathname());
 
             print_r($parseResults->getParsedRawData());
 
