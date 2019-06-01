@@ -1,0 +1,1 @@
+Simple Template 01 {%variable%}
