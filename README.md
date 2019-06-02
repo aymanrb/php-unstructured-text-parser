@@ -106,7 +106,7 @@ Array(
 )
 ```
 
-Upgrading from v1.3 to v2.0
+Upgrading from v1.x to v2.x
 ------------------------
 Version 2.0 is more or less a refactored copy of version 1.x of the library and provides the exact same functionality.
 There is just one slight difference in the results returned. It's now a parsed data object instead of an array.
