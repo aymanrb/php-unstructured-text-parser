@@ -67,7 +67,9 @@ class TemplatesHelper
             $templates[$fileInfo->getPathname()] = $this->prepareTemplate($templateContent);
         }
 
-        return ksort($templates);
+        krsort($templates);
+
+        return $templates;
     }
 
     private function prepareTemplate(string $templateText): string
