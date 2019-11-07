@@ -2,7 +2,7 @@
 
 namespace aymanrb\UnstructuredTextParser\Helper;
 
-use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesFilesystemException;
+use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
 
 class TemplatesHelper
 {
