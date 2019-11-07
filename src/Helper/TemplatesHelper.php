@@ -2,17 +2,17 @@
 
 namespace aymanrb\UnstructuredTextParser\Helper;
 
-use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
+use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesFilesystemException;
 
 class TemplatesHelper
 {
-    /** @var \DirectoryIterator; Iterable Directory */
-    private $directoryIterator;
+    /** @var \FilesystemIterator; Iterable Directory */
+    private $filesystemIterator;
 
 
     public function __construct(string $templatesDir)
     {
-        $this->directoryIterator = $this->createTemplatesDirIterator($templatesDir);
+        $this->filesystemIterator = $this->createTemplatesDirIterator($templatesDir);
     }
 
     public function getTemplates(string $text, bool $findMatchingTemplate = false): array
@@ -24,15 +24,15 @@ class TemplatesHelper
         return $this->getAllValidTemplates();
     }
 
-    private function createTemplatesDirIterator(string $iterableDirectoryPath): \DirectoryIterator
+    private function createTemplatesDirIterator(string $iterableFilesystemPath): \DirectoryIterator
     {
-        if (empty($iterableDirectoryPath) || !is_dir($iterableDirectoryPath)) {
+        if (empty($iterableDirectoryPath) || !is_dir($iterableFilesystemPath)) {
             throw new InvalidTemplatesDirectoryException(
                 'Invalid templates directory provided'
             );
         }
 
-        return new \DirectoryIterator(rtrim($iterableDirectoryPath, '/'));
+        return new \FilesystemIterator(rtrim($iterableDirectoryPath, '/'));
     }
 
     private function findTemplate(string $text): array
@@ -40,7 +40,7 @@ class TemplatesHelper
         $matchedTemplate = [];
         $maxMatch = -1;
 
-        foreach ($this->directoryIterator as $fileInfo) {
+        foreach ($this->filesystemIterator as $fileInfo) {
             $templateContent = file_get_contents($fileInfo->getPathname());
 
             //Compare template against text to decide on similarity percentage
