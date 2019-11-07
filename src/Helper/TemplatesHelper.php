@@ -24,15 +24,15 @@ class TemplatesHelper
         return $this->getAllValidTemplates();
     }
 
-    private function createTemplatesDirIterator(string $iterableFilesystemPath): \DirectoryIterator
+    private function createTemplatesDirIterator(string $iterableFilesystemPath): \FilesystemIterator
     {
-        if (empty($iterableDirectoryPath) || !is_dir($iterableFilesystemPath)) {
+        if (empty($iterableFilesystemPath) || !is_dir($iterableFilesystemPath)) {
             throw new InvalidTemplatesDirectoryException(
                 'Invalid templates directory provided'
             );
         }
 
-        return new \FilesystemIterator(rtrim($iterableDirectoryPath, '/'));
+        return new \FilesystemIterator(rtrim($iterableFilesystemPath, '/'));
     }
 
     private function findTemplate(string $text): array
@@ -58,7 +58,7 @@ class TemplatesHelper
     private function getAllValidTemplates(): array
     {
         $templates = [];
-        foreach ($this->directoryIterator as $fileInfo) {
+        foreach ($this->filesystemIterator as $fileInfo) {
             if (!is_file($fileInfo->getPathname())) {
                 continue;
             }
