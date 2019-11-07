@@ -5,7 +5,7 @@ use aymanrb\UnstructuredTextParser\TextParser;
 
 try {
     $parser = new TextParser(__DIR__ . '/templates');
-    $textFiles = new DirectoryIterator(__DIR__ . '/test_txt_files');
+    $textFiles = new FilesystemIterator(__DIR__ . '/test_txt_files');
 
     foreach ($textFiles as $txtFileObj) {
         if ($txtFileObj->getExtension() == 'txt') {
