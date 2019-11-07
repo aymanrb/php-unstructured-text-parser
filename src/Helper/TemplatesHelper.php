@@ -6,7 +6,7 @@ use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
 
 class TemplatesHelper
 {
-    /** @var \FilesystemIterator; Iterable Directory */
+    /** @var \DirectoryIterator; Iterable Directory */
     private $directoryIterator;
 
 
@@ -24,7 +24,7 @@ class TemplatesHelper
         return $this->getAllValidTemplates();
     }
 
-    private function createTemplatesDirIterator(string $iterableDirectoryPath): \FilesystemIterator
+    private function createTemplatesDirIterator(string $iterableDirectoryPath): \DirectoryIterator
     {
         if (empty($iterableDirectoryPath) || !is_dir($iterableDirectoryPath)) {
             throw new InvalidTemplatesDirectoryException(
@@ -32,7 +32,7 @@ class TemplatesHelper
             );
         }
 
-        return new \FilesystemIterator(rtrim($iterableDirectoryPath, '/'));
+        return new \DirectoryIterator(rtrim($iterableDirectoryPath, '/'));
     }
 
     private function findTemplate(string $text): array

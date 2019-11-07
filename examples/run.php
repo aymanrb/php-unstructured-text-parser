@@ -5,13 +5,13 @@ use aymanrb\UnstructuredTextParser\TextParser;
 
 try {
     $parser = new TextParser(__DIR__ . '/templates');
-    $textFiles = new FilesystemIterator(__DIR__ . '/test_txt_files');
+    $textFiles = new DirectoryIterator(__DIR__ . '/test_txt_files');
 
     foreach ($textFiles as $txtFileObj) {
-        if ($txtFileObj->getExtension() === 'txt') {
+        if ($txtFileObj->getExtension() == 'txt') {
             echo $txtFileObj->getFilename() . PHP_EOL;
 
-            $parseResults = $parser->parseFileContent($txtFileObj->getPathname(), true);
+            $parseResults = $parser->parseFileContent($txtFileObj->getPathname());
 
             print_r($parseResults->getParsedRawData());
 
