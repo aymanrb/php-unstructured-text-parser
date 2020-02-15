@@ -27,7 +27,7 @@ class TextParser
 
         $this->setLogger($logger);
         $this->templatesHelper = new TemplatesHelper($templatesDir);
-        $this->parseResults = new ParseResult();
+        $this->resetParseResults();
     }
 
     public function parseFileContent(string $filePath, bool $findMatchingTemplate = false): ParseResult
@@ -41,6 +41,8 @@ class TextParser
 
     public function parseText(string $text, bool $findMatchingTemplate = false): ParseResult
     {
+        $this->resetParseResults();
+
         $this->logger->info(sprintf('Parsing: %s', $text));
 
         $text = $this->prepareText($text);
@@ -56,6 +58,11 @@ class TextParser
 
         $this->logger->info(sprintf('Data extracted: %s', json_encode($this->parseResults->getParsedRawData())));
 
+        return $this->parseResults;
+    }
+
+    public function getParseResults(): ParseResult
+    {
         return $this->parseResults;
     }
 
@@ -83,5 +90,10 @@ class TextParser
         $this->parseResults->setParsedRawData($matches);
 
         return true;
+    }
+
+    private function resetParseResults(): void
+    {
+        $this->parseResults = new ParseResult();
     }
 }

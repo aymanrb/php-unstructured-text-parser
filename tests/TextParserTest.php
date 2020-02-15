@@ -21,55 +21,65 @@ class TextParserTest extends TestCase
     public function testTextParsingFailure()
     {
         $parser = $this->getTemplatesParser();
-        $parseResults = $parser->parseText('Some Text that can not be matched against a template');
+        $parser->parseText('Some Text that can not be matched against a template');
 
-        $this->assertEmpty($parseResults->getParsedRawData());
+        $this->assertEmpty($parser->getParseResults()->getParsedRawData());
+    }
+
+    public function testTextParsingResetsPreviousMatch()
+    {
+        $parser = $this->getTemplatesParser();
+        $parser->parseFileContent(__DIR__ . '/test_txt_files/t0TemplateMatch.txt');
+        $this->assertEquals(13, $parser->getParseResults()->countResults());
+
+        $parser->parseFileContent(__DIR__ . '/test_txt_files/noMatch.txt');
+        $this->assertEmpty($parser->getParseResults()->getParsedRawData());
     }
 
     public function testTextParsingSuccess()
     {
         $parser = $this->getTemplatesParser();
-        $parsedValues = $parser->parseFileContent(__DIR__ . '/test_txt_files/t0TemplateMatch.txt');
-        $this->assertEquals(13, $parsedValues->countResults());
+        $parser->parseFileContent(__DIR__ . '/test_txt_files/t0TemplateMatch.txt');
+        $this->assertEquals(13, $parser->getParseResults()->countResults());
     }
 
     public function testSimilarityCheckFalseSelectsFirstMatchTemplateRatherBestFit()
     {
         $parser = $this->getTemplatesParser();
-        $parsedValues = $parser->parseFileContent(__DIR__ . '/test_txt_files/webFeedback.html');
-        $this->assertEquals(1, $parsedValues->countResults());
-        $this->assertTrue($parsedValues->keyExists('theWholeMessageMatch'));
+        $parser->parseFileContent(__DIR__ . '/test_txt_files/webFeedback.html');
+        $this->assertEquals(1, $parser->getParseResults()->countResults());
+        $this->assertTrue($parser->getParseResults()->keyExists('theWholeMessageMatch'));
     }
 
     public function testSimilarityCheckTrueSelectsBestFitTemplateRatherThanFirstMatch()
     {
         $parser = $this->getTemplatesParser();
-        $parsedValues = $parser->parseFileContent(
+        $parser->parseFileContent(
             __DIR__ . '/test_txt_files/webFeedback.html',
             true
         );
-        $this->assertEquals(10, $parsedValues->countResults());
-        $this->assertFalse($parsedValues->keyExists('theWholeMessageMatch'));
-        $this->assertEquals('Mozilla', $parsedValues->get('browserCode'));
+        $this->assertEquals(10, $parser->getParseResults()->countResults());
+        $this->assertFalse($parser->getParseResults()->keyExists('theWholeMessageMatch'));
+        $this->assertEquals('Mozilla', $parser->getParseResults()->get('browserCode'));
     }
 
     public function testTextParsingReturns()
     {
         $parser = $this->getTemplatesParser();
-        $parsedValues = $parser->parseFileContent(__DIR__ . '/test_txt_files/t0TemplateMatch.txt');
+        $parser->parseFileContent(__DIR__ . '/test_txt_files/t0TemplateMatch.txt');
 
         //Make sure no html scripts are returned
         $this->assertEquals(
-            $parsedValues->get('country'),
-            htmlspecialchars($parsedValues->get('country'))
+            $parser->getParseResults()->get('country'),
+            htmlspecialchars($parser->getParseResults()->get('country'))
         );
         //Make sure data is trimmed on return
-        $this->assertEquals('2', $parsedValues->get('children'));
+        $this->assertEquals('2', $parser->getParseResults()->get('children'));
 
         //Make sure data format and whitespaces are preserved
         $this->assertEquals(
             '11 - 10 - 2014',
-            $parsedValues->get('arrival_date')
+            $parser->getParseResults()->get('arrival_date')
         );
     }
 
