@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 
 class TextParserTest extends TestCase
 {
-
     public function testExceptionIsRaisedForInvalidConstructorArguments()
     {
         $this->expectException(InvalidTemplatesDirectoryException::class);

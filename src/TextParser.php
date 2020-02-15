@@ -43,9 +43,6 @@ class TextParser
     {
         $this->resetParseResults();
 
-        $this->logger->info(sprintf('Parsing: %s', $text));
-
-        $text = $this->prepareText($text);
         $parsableTemplates = $this->templatesHelper->getTemplates($text, $findMatchingTemplate);
 
         foreach ($parsableTemplates as $templatePath => $templatePattern) {
@@ -64,14 +61,6 @@ class TextParser
     public function getParseResults(): ParseResult
     {
         return $this->parseResults;
-    }
-
-    private function prepareText(string $text): string
-    {
-        //Remove all multiple whitespaces and replace it with single space
-        $text = preg_replace('/\s+/', ' ', $text);
-
-        return trim($text);
     }
 
     private function extractData(string $text, string $template): bool
