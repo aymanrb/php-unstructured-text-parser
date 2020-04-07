@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 
 class TextParserTest extends TestCase
 {
-
     public function testExceptionIsRaisedForInvalidConstructorArguments()
     {
         $this->expectException(InvalidTemplatesDirectoryException::class);
@@ -46,40 +45,40 @@ class TextParserTest extends TestCase
     public function testSimilarityCheckFalseSelectsFirstMatchTemplateRatherBestFit()
     {
         $parser = $this->getTemplatesParser();
-        $parser->parseFileContent(__DIR__ . '/test_txt_files/webFeedback.html');
-        $this->assertEquals(1, $parser->getParseResults()->countResults());
-        $this->assertTrue($parser->getParseResults()->keyExists('theWholeMessageMatch'));
+        $parseResults = $parser->parseFileContent(__DIR__ . '/test_txt_files/webFeedback.html');
+        $this->assertEquals(1, $parseResults->countResults());
+        $this->assertTrue($parseResults->keyExists('theWholeMessageMatch'));
     }
 
     public function testSimilarityCheckTrueSelectsBestFitTemplateRatherThanFirstMatch()
     {
         $parser = $this->getTemplatesParser();
-        $parser->parseFileContent(
+        $parseResults = $parser->parseFileContent(
             __DIR__ . '/test_txt_files/webFeedback.html',
             true
         );
-        $this->assertEquals(10, $parser->getParseResults()->countResults());
-        $this->assertFalse($parser->getParseResults()->keyExists('theWholeMessageMatch'));
-        $this->assertEquals('Mozilla', $parser->getParseResults()->get('browserCode'));
+        $this->assertEquals(10, $parseResults->countResults());
+        $this->assertFalse($parseResults->keyExists('theWholeMessageMatch'));
+        $this->assertEquals('Mozilla', $parseResults->get('browserCode'));
     }
 
     public function testTextParsingReturns()
     {
         $parser = $this->getTemplatesParser();
-        $parser->parseFileContent(__DIR__ . '/test_txt_files/t0TemplateMatch.txt');
+        $parseResults = $parser->parseFileContent(__DIR__ . '/test_txt_files/t0TemplateMatch.txt');
 
         //Make sure no html scripts are returned
         $this->assertEquals(
-            $parser->getParseResults()->get('country'),
-            htmlspecialchars($parser->getParseResults()->get('country'))
+            $parseResults->get('country'),
+            htmlspecialchars($parseResults->get('country'))
         );
         //Make sure data is trimmed on return
-        $this->assertEquals('2', $parser->getParseResults()->get('children'));
+        $this->assertEquals('2', $parseResults->get('children'));
 
         //Make sure data format and whitespaces are preserved
         $this->assertEquals(
             '11 - 10 - 2014',
-            $parser->getParseResults()->get('arrival_date')
+            $parseResults->get('arrival_date')
         );
     }
 

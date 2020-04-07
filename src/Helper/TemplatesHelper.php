@@ -74,18 +74,7 @@ class TemplatesHelper
 
     private function prepareTemplate(string $templateText): string
     {
-        $patterns = [
-            '/\\\{%(.*)%\\\}/U', // 1 Replace all {%Var%}...
-            '/\s+/',             // 2 Replace all white-spaces...
-        ];
-
-        $replacements = [
-            '(?<$1>.*)',         // 1 ...with (?<Var>.*)
-            ' ',                 // 2 ...with a single space
-        ];
-
-        $templateText = preg_replace($patterns, $replacements, preg_quote($templateText, '/'));
-
-        return trim($templateText);
+        // replace all {%Var%} in the template with (?<Var>.*) regex vars
+        return preg_replace('/\\\{%(.*)%\\\}/U', '(?<$1>.*)', preg_quote($templateText, '/'));
     }
 }

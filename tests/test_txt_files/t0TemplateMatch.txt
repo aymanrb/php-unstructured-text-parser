@@ -8,5 +8,4 @@ Hi <font color='#db3484'>Carlo </font>,<br />
 <br />
 
 
-Click here to view the booked tour:  <a href='http://www.example.com/page.html' >Tour Name</a> <br /><br /><br />  E-mail address : mymail@test.com <br /><br /> Customer Name : Hello World <br /><br /> Country : <a href='http://en.wikipedia.org/wiki/Egypt'>Egypt</a> <br /><br /> Arrival Date : 11 - 10 - 2014 <br /><br />
- Departure Date : 11 - 10 - 2014 <br /><br /> Number of Adults : 4 <br /><br /> Number of Children : 2 <br /><br /> Additional Requests : Some more information goes here <br /><br />
+Click here to view the booked tour:  <a href='http://www.example.com/page.html' >Tour Name</a> <br /><br /><br />  E-mail address : mymail@test.com <br /><br /> Customer Name : Hello World <br /><br /> Country : <a href='http://en.wikipedia.org/wiki/Egypt'>Egypt</a> <br /><br /> Arrival Date : 11 - 10 - 2014 <br /><br /> Departure Date : 11 - 10 - 2014 <br /><br /> Number of Adults : 4 <br /><br /> Number of Children : 2 <br /><br /> Additional Requests : Some more information goes here <br /><br />

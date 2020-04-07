@@ -9,4 +9,4 @@ URL: www.example.com/something
 Nationality: German
 Phone: 6655885524455
 Comments: Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here - Some Text Goes Here
-
+Some text goes here but will be ignored by the template since it's on a new line

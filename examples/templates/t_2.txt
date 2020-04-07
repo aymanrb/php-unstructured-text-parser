@@ -9,4 +9,3 @@ URL: {%url%}
 Nationality: {%nationality%}
 Phone: {%phone%}
 Comments: {%text%}
-

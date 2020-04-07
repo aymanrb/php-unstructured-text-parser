@@ -56,7 +56,6 @@ class TemplatesHelperTest extends TestCase
         foreach ($templatesArray as $templatePath => $template) {
             $this->assertStringContainsString('(?<variable>.*)', $template);
             $this->assertTrue($this->isValidRegex($template));
-            $this->assertEquals(0, substr_count($template, PHP_EOL));
         }
 
         return true;
@@ -67,7 +66,6 @@ class TemplatesHelperTest extends TestCase
         try {
             preg_match('/' . $pattern . '/s', '');
         } catch (\Throwable $exception) {
-            print_r($exception->getMessage());
             return false;
         }
 
