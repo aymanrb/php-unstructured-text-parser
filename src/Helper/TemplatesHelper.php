@@ -43,7 +43,7 @@ class TemplatesHelper
         foreach ($this->directoryIterator as $fileInfo) {
             $templateContent = file_get_contents($fileInfo->getPathname());
 
-            //Compare template against text to decide on similarity percentage
+            // compare template against text to decide on similarity percentage
             similar_text($text, $templateContent, $matchPercentage);
 
             if ($matchPercentage > $maxMatch) {
@@ -74,7 +74,21 @@ class TemplatesHelper
 
     private function prepareTemplate(string $templateText): string
     {
+        $templateText = preg_quote($templateText, '/');
+
+        // replace all {%Var:Pattern%} in the template with (?<Var>Pattern) regex vars
+        $templateText =  preg_replace('/\\\{%([^%]+)\\:(.*)%\\\}/U', '(?<$1>$2)', $templateText);
+
+        // remove the regex escaped characters of the provided patterns
+        $templateText = preg_replace_callback(
+            '/(\(\?[^\)]*)./',
+            function ($matches) {
+                return str_replace('\\', '', $matches[0]);
+            },
+            $templateText
+        );
+
         // replace all {%Var%} in the template with (?<Var>.*) regex vars
-        return preg_replace('/\\\{%(.*)%\\\}/U', '(?<$1>.*)', preg_quote($templateText, '/'));
+        return preg_replace('/\\\{%(.*)%\\\}/U', '(?<$1>.*)', $templateText);
     }
 }

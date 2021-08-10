@@ -1,0 +1,10 @@
+~ New message received ~
+
+Sender: {%id:[0-9]+%} {%name%}
+Sender-id: {%senderId%}
+Sender-full-name: {%senderName%}
+Sender-email: {%senderEmail%}
+Sender-website: {%senderSite%}
+Sender-nationality: {%senderCountry%}
+Message:
+{%senderMessage%}
