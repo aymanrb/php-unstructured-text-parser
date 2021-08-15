@@ -61,7 +61,9 @@ Parsing Procedure
 ----------
 1- Grab a single copy of the text you want to parse.
 
-2- Replace every single varying text within it to a named variable in the form of ``{%VariableName%}``
+2- Replace every single varying text within it to a named variable in the form of ``{%VariableName%}`` if you want to match
+everything in this part of text or ``{%VariableName:Pattern%}`` if you want to match a specific set of characters or use a more
+precise pattern.
 
 3- Add the templates file into the templates directory (defined in parsing code) with a txt extension ``fileName.txt``
 
@@ -72,8 +74,9 @@ Template Example
 If the text documents you want to parse looks like this:
 
 ```
-Hi GitHub-er,
+Hello,
 If you wish to parse message coming from a website that states info like:
+ID & Source: 12234432 Website Form  
 Name: Pet Cat
 E-Mail: email@example.com
 Comment: Some text goes here
@@ -86,8 +89,9 @@ Admin
 Your Template file (``example_template.txt``) could be something like:
 
 ```
-Hi {%nameOfRecipient%},
+Hello,
 If you wish to parse message coming from a website that states info like:
+ID & Source: {%id:[0-9]+%} {%source%}
 Name: {%senderName%}
 E-Mail: {%senderEmail%}
 Comment: {%comment%}
@@ -101,7 +105,8 @@ The output of a successful parsing job would be:
 
 ```
 Array(
-    'nameOfRecipient' => 'GitHub-er',
+    'id' => '12234432',
+    'source' => 'Website Form',
     'senderName' => 'Pet Cat',
     'senderEmail' => 'email@example.com',
     'comment' => 'Some text goes here'

@@ -8,6 +8,9 @@ use PHPUnit\Framework\TestCase;
 
 class TemplatesHelperTest extends TestCase
 {
+    private const DIR_HELPER_TEMPLATES = '/helper_templates';
+    const DIR_EXPECTED_TEMPLATES = '/expected_templates';
+
     public function testExceptionIsRaisedForInvalidTemplatesDirectory()
     {
         $this->expectException(InvalidTemplatesDirectoryException::class);
@@ -16,15 +19,16 @@ class TemplatesHelperTest extends TestCase
 
     private function getTemplatesHelperInstance()
     {
-        return new TemplatesHelper(__DIR__ . '/helper_templates');
+        return new TemplatesHelper(__DIR__ . self::DIR_HELPER_TEMPLATES);
     }
 
     public function testGetAllTemplates()
     {
         $templatesHelper = $this->getTemplatesHelperInstance();
+        $expectedTemplatesCount = count(glob(__DIR__ . self::DIR_HELPER_TEMPLATES . "/*"));
 
         $returnedTemplates = $templatesHelper->getTemplates('regardless of what comes here');
-        $this->assertCount(2, $returnedTemplates);
+        $this->assertCount($expectedTemplatesCount, $returnedTemplates);
     }
 
     public function testGetAllTemplatesRegexIsPrepared()
@@ -54,7 +58,9 @@ class TemplatesHelperTest extends TestCase
     private function checkPreparedTemplates(array $templatesArray): bool
     {
         foreach ($templatesArray as $templatePath => $template) {
-            $this->assertStringContainsString('(?<variable>.*)', $template);
+            $expectedTemplate = $this->getExpectedTemplate($templatePath);
+
+            $this->assertEquals($expectedTemplate, $template);
             $this->assertTrue($this->isValidRegex($template));
         }
 
@@ -71,4 +77,16 @@ class TemplatesHelperTest extends TestCase
 
         return true;
     }
+
+    private function getExpectedTemplate(string $templatePath)
+    {
+        return file_get_contents(
+            str_replace(
+                self::DIR_HELPER_TEMPLATES,
+                self::DIR_EXPECTED_TEMPLATES,
+                $templatePath
+            )
+        );
+    }
+
 }
