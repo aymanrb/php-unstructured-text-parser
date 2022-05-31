@@ -1,13 +1,11 @@
 Unstructured Text Parser [PHP]
 ===========================================
-[![Build Status](https://travis-ci.org/aymanrb/php-unstructured-text-parser.svg?branch=master)](https://travis-ci.org/aymanrb/php-unstructured-text-parser)
+[![Tests](https://github.com/aymanrb/php-unstructured-text-parser/actions/workflows/php.yml/badge.svg)](https://github.com/aymanrb/php-unstructured-text-parser/actions/workflows/php.yml)
 [![Coverage Status](https://coveralls.io/repos/github/aymanrb/php-unstructured-text-parser/badge.svg?branch=master)](https://coveralls.io/github/aymanrb/php-unstructured-text-parser?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/v/stable.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 [![Latest Unstable Version](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/v/unstable.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 [![Total Downloads](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/downloads)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 [![License](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/license.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
-
-
 
 About Unstructured Text Parser
 ----------------------------------
