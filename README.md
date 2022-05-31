@@ -7,8 +7,6 @@ Unstructured Text Parser [PHP]
 [![Total Downloads](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/downloads)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 [![License](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/license.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 
-
-
 About Unstructured Text Parser
 ----------------------------------
 This is a small PHP library to help extract text out of documents that are not structured in a processing friendly format. 
