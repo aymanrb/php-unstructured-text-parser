@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace aymanrb\UnstructuredTextParser;
 
 use aymanrb\UnstructuredTextParser\Exception\InvalidParseFileException;
@@ -12,12 +14,9 @@ class TextParser
 {
     use LoggerAwareTrait;
 
-    /** @var TemplatesHelper; Templates Directory Iterator */
-    private $templatesHelper;
+    private TemplatesHelper $templatesHelper;
 
-    /** @var ParseResult; Parsed data results */
-    private $parseResults;
-
+    private ParseResult $parseResults;
 
     public function __construct(string $templatesDir, LoggerInterface $logger = null)
     {

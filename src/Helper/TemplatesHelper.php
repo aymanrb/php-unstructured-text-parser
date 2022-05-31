@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace aymanrb\UnstructuredTextParser\Helper;
 
 use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
 
 class TemplatesHelper
 {
-    /** @var \FilesystemIterator; Iterable Directory */
-    private $directoryIterator;
-
+    private \FilesystemIterator $directoryIterator;
 
     public function __construct(string $templatesDir)
     {
@@ -77,11 +77,11 @@ class TemplatesHelper
         $templateText = preg_quote($templateText, '/');
 
         // replace all {%Var:Pattern%} in the template with (?<Var>Pattern) regex vars
-        $templateText =  preg_replace('/\\\{%([^%]+)\\:(.*)%\\\}/U', '(?<$1>$2)', $templateText);
+        $templateText =  preg_replace('/\\\{%([^%]+):(.*)%\\\}/U', '(?<$1>$2)', $templateText);
 
         // remove the regex escaped characters of the provided patterns
         $templateText = preg_replace_callback(
-            '/(\(\?[^\)]*)./',
+            '/(\(\?[^)]*)./',
             function ($matches) {
                 return str_replace('\\', '', $matches[0]);
             },
