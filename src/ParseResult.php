@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace aymanrb\UnstructuredTextParser;
 
 use aymanrb\UnstructuredTextParser\Exception\InvalidParsedDataKeyException;
 
 class ParseResult
 {
-    private $parsedRawData = [];
+    private array $parsedRawData = [];
 
-    private $appliedTemplateFile;
+    private ?string $appliedTemplateFile = null;
 
     public function getParsedRawData(): array
     {
@@ -26,7 +28,7 @@ class ParseResult
         return $this->appliedTemplateFile;
     }
 
-    public function setAppliedTemplateFile($appliedTemplateFile): void
+    public function setAppliedTemplateFile(string $appliedTemplateFile): void
     {
         $this->appliedTemplateFile = $appliedTemplateFile;
     }
@@ -36,12 +38,12 @@ class ParseResult
         return count($this->parsedRawData);
     }
 
-    public function keyExists($key): bool
+    public function keyExists(string $key): bool
     {
         return array_key_exists($key, $this->parsedRawData);
     }
 
-    public function get(string $resultDataKey, $failOnUndefinedKey = false): ?string
+    public function get(string $resultDataKey, bool $failOnUndefinedKey = false): ?string
     {
         if (!$this->keyExists($resultDataKey)) {
             if (!$failOnUndefinedKey) {
