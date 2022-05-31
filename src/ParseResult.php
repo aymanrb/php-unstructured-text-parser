@@ -10,7 +10,7 @@ class ParseResult
 {
     private array $parsedRawData = [];
 
-    private ?string $appliedTemplateFile;
+    private ?string $appliedTemplateFile = null;
 
     public function getParsedRawData(): array
     {
