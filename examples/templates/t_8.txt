@@ -5,6 +5,7 @@ Sender-id: {%senderId%}
 Sender-full-name: {%senderName%}
 Sender-email: {%senderEmail%}
 Sender-website: {%senderSite%}
+Sender-number: {%senderPhone:\+[0-9]{10,15}%}
 Sender-nationality: {%senderCountry%}
 Message:
 {%senderMessage%}
