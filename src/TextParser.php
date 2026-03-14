@@ -14,17 +14,13 @@ class TextParser
 {
     use LoggerAwareTrait;
 
-    private TemplatesHelper $templatesHelper;
+    private readonly TemplatesHelper $templatesHelper;
 
     private ParseResult $parseResults;
 
-    public function __construct(string $templatesDir, LoggerInterface $logger = null)
+    public function __construct(string $templatesDir, ?LoggerInterface $logger = null)
     {
-        if (empty($logger)) {
-            $logger = new NullLogger();
-        }
-
-        $this->setLogger($logger);
+        $this->setLogger($logger ?? new NullLogger());
         $this->templatesHelper = new TemplatesHelper($templatesDir);
         $this->resetParseResults();
     }
@@ -35,7 +31,13 @@ class TextParser
             throw new InvalidParseFileException($filePath);
         }
 
-        return $this->parseText(file_get_contents($filePath), $findMatchingTemplate);
+        $fileContents = file_get_contents($filePath);
+
+        if ($fileContents === false) {
+            throw new InvalidParseFileException($filePath);
+        }
+
+        return $this->parseText($fileContents, $findMatchingTemplate);
     }
 
     public function parseText(string $text, bool $findMatchingTemplate = false): ParseResult

@@ -49,3 +49,4 @@ examples/Logs/*
 /cache.properties
 tests/_reports/*
 build/logs/*
+.phpunit.cache/test-results

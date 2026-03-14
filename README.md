@@ -1,7 +1,6 @@
 Unstructured Text Parser [PHP]
 ===========================================
 [![Tests](https://github.com/aymanrb/php-unstructured-text-parser/actions/workflows/php.yml/badge.svg)](https://github.com/aymanrb/php-unstructured-text-parser/actions/workflows/php.yml)
-[![Coverage Status](https://coveralls.io/repos/github/aymanrb/php-unstructured-text-parser/badge.svg?branch=master)](https://coveralls.io/github/aymanrb/php-unstructured-text-parser?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/v/stable.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 [![Total Downloads](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/downloads)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 [![License](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/license.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
@@ -19,13 +18,11 @@ Useful when you want to parse data out of:
 Installation
 ----------
 PHP Unstructured Text Parser is available on [Packagist](https://packagist.org/packages/aymanrb/php-unstructured-text-parser) (using semantic versioning), and installation via [Composer](https://getcomposer.org) is recommended. 
-Add the following line to your `composer.json` file:
 
-```json
-"aymanrb/php-unstructured-text-parser": "~2.0"
-```
+Requirements:
+- PHP 8.1 or newer
 
-or run
+Install it with Composer:
 
 ```sh
 composer require aymanrb/php-unstructured-text-parser
