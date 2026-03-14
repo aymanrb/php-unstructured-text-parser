@@ -17,7 +17,7 @@ class TemplatesHelper
     private const REPLACE_GENERIC_VARIABLE = '(?<$1>.*)'; //(?<Var>.*)
     private const REPLACE_VARIABLE_WITH_PATTERN = '(?<$1>$2)'; //(?<Var>Pattern)
 
-    private \FilesystemIterator $directoryIterator;
+    private readonly \FilesystemIterator $directoryIterator;
 
     public function __construct(string $templatesDir)
     {
@@ -52,6 +52,10 @@ class TemplatesHelper
         foreach ($this->directoryIterator as $fileInfo) {
             $templateContent = file_get_contents($fileInfo->getPathname());
 
+            if ($templateContent === false) {
+                continue;
+            }
+
             // compare template against text to decide on similarity percentage
             similar_text($text, $templateContent, $matchPercentage);
 
@@ -73,6 +77,11 @@ class TemplatesHelper
             }
 
             $templateContent = file_get_contents($fileInfo->getPathname());
+
+            if ($templateContent === false) {
+                continue;
+            }
+
             $templates[$fileInfo->getPathname()] = $this->prepareTemplate($templateContent);
         }
 
@@ -85,26 +94,30 @@ class TemplatesHelper
     {
         $templateText = preg_quote($templateText, '/');
 
-        $templateText =  preg_replace(
+        $templateText = preg_replace(
             self::REGEX_VARIABLE_WITH_PATTERN,
             self::REPLACE_VARIABLE_WITH_PATTERN,
             $templateText
-        );
+        ) ?? $templateText;
 
         $templateText = preg_replace_callback(
             self::REGEX_PREPARED_VARIABLE_WITH_PATTERN,
-            function ($matches) {
+            static function (array $matches): string {
                 $variableWithPattern = preg_replace(self::REGEX_ORPHAN_BACKSLASH, '', $matches[0]);
 
-                return str_replace(self::STR_SEARCH_TRIPLE_BACKSLASHES, '\\', $variableWithPattern);
+                return str_replace(
+                    self::STR_SEARCH_TRIPLE_BACKSLASHES,
+                    '\\',
+                    $variableWithPattern ?? $matches[0]
+                );
             },
             $templateText
-        );
+        ) ?? $templateText;
 
         return preg_replace(
             self::REGEX_GENERIC_VARIABLE,
             self::REPLACE_GENERIC_VARIABLE,
             $templateText
-        );
+        ) ?? $templateText;
     }
 }

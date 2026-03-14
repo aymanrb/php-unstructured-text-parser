@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 class TemplatesHelperTest extends TestCase
 {
     private const DIR_HELPER_TEMPLATES = '/helper_templates';
-    const DIR_EXPECTED_TEMPLATES = '/expected_templates';
+    private const DIR_EXPECTED_TEMPLATES = '/expected_templates';
 
     public function testExceptionIsRaisedForInvalidTemplatesDirectory()
     {
@@ -17,7 +17,7 @@ class TemplatesHelperTest extends TestCase
         new TemplatesHelper(__DIR__ . '/DirectoryThatDoesNotExist');
     }
 
-    private function getTemplatesHelperInstance()
+    private function getTemplatesHelperInstance(): TemplatesHelper
     {
         return new TemplatesHelper(__DIR__ . self::DIR_HELPER_TEMPLATES);
     }
@@ -78,7 +78,7 @@ class TemplatesHelperTest extends TestCase
         return true;
     }
 
-    private function getExpectedTemplate(string $templatePath)
+    private function getExpectedTemplate(string $templatePath): string
     {
         return file_get_contents(
             str_replace(

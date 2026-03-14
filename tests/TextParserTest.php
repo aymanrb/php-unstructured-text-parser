@@ -2,8 +2,6 @@
 
 namespace aymanrb\UnstructuredTextParser\Tests;
 
-include_once __DIR__ . '/../vendor/autoload.php';
-
 use aymanrb\UnstructuredTextParser\Exception\InvalidParseFileException;
 use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
 use aymanrb\UnstructuredTextParser\TextParser;

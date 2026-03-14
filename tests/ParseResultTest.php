@@ -2,15 +2,13 @@
 
 namespace aymanrb\UnstructuredTextParser\Tests;
 
-include_once __DIR__ . '/../vendor/autoload.php';
-
 use aymanrb\UnstructuredTextParser\Exception\InvalidParsedDataKeyException;
 use aymanrb\UnstructuredTextParser\ParseResult;
 use PHPUnit\Framework\TestCase;
 
 class ParseResultTest extends TestCase
 {
-    private function getNewParseResultObject($fillWithData = false): ParseResult
+    private function getNewParseResultObject(bool $fillWithData = false): ParseResult
     {
         $parseResult = new ParseResult();
 

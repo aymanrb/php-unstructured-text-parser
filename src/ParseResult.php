@@ -58,9 +58,7 @@ class ParseResult
 
     private function cleanData(): void
     {
-        foreach ($this->parsedRawData as $key => $value) {
-            $this->parsedRawData[$key] = $this->cleanElement($value);
-        }
+        $this->parsedRawData = array_map($this->cleanElement(...), $this->parsedRawData);
     }
 
     private function cleanElement(string $value): string
