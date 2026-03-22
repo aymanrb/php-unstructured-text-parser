@@ -37,6 +37,8 @@ class TextParser
             throw new InvalidParseFileException($filePath);
         }
 
+        $this->logger->debug(sprintf('Parsing file: %s (%d bytes)', $filePath, strlen($fileContents)));
+
         return $this->parseText($fileContents, $findMatchingTemplate);
     }
 
@@ -52,15 +54,29 @@ class TextParser
 
         $parsableTemplates = $this->templatesHelper->getTemplates($text, $findMatchingTemplate);
 
+        $this->logger->debug(sprintf(
+            'Attempting to parse %d character(s) against %d template(s) [similarity=%s]',
+            strlen($text),
+            count($parsableTemplates),
+            $findMatchingTemplate ? 'on' : 'off'
+        ));
+
         foreach ($parsableTemplates as $templatePath => $templatePattern) {
-            $this->logger->debug(sprintf('Parsing against template: %s', $templatePath));
+            $this->logger->debug(sprintf('Trying template: %s', basename($templatePath)));
 
             if ($this->extractData($text, $templatePattern)) {
                 $this->parseResults->setAppliedTemplateFile($templatePath);
+                $this->logger->info(sprintf(
+                    'Match found: template "%s" extracted %d key(s)',
+                    basename($templatePath),
+                    $this->parseResults->countResults()
+                ));
             }
         }
 
-        $this->logger->info(sprintf('Data extracted: %s', json_encode($this->parseResults->getParsedRawData())));
+        if ($this->parseResults->getAppliedTemplateFile() === null) {
+            $this->logger->info('No template matched the provided text');
+        }
 
         return $this->parseResults;
     }
