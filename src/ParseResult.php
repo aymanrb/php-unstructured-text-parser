@@ -6,7 +6,7 @@ namespace aymanrb\UnstructuredTextParser;
 
 use aymanrb\UnstructuredTextParser\Exception\InvalidParsedDataKeyException;
 
-class ParseResult
+class ParseResult implements \IteratorAggregate, \Countable
 {
     private array $parsedRawData = [];
 
@@ -36,6 +36,16 @@ class ParseResult
     public function countResults(): int
     {
         return count($this->parsedRawData);
+    }
+
+    public function count(): int
+    {
+        return $this->countResults();
+    }
+
+    public function getIterator(): \ArrayIterator
+    {
+        return new \ArrayIterator($this->parsedRawData);
     }
 
     public function keyExists(string $key): bool
