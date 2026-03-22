@@ -66,6 +66,15 @@ class ParseResult implements \IteratorAggregate, \Countable
         return $this->parsedRawData[$resultDataKey];
     }
 
+    public function getOrFail(string $resultDataKey): string
+    {
+        if (!$this->keyExists($resultDataKey)) {
+            throw new InvalidParsedDataKeyException('Undefined results key: ' . $resultDataKey);
+        }
+
+        return $this->parsedRawData[$resultDataKey];
+    }
+
     private function cleanData(): void
     {
         $this->parsedRawData = array_map($this->cleanElement(...), $this->parsedRawData);
