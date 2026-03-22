@@ -17,6 +17,7 @@ local.properties
 *.tar
 *.zip
 vendor/
+composer.lock
 
 # Logs and databases #
 ######################
