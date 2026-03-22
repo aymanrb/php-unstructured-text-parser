@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace aymanrb\UnstructuredTextParser\Helper;
 
 use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
+use aymanrb\UnstructuredTextParser\Exception\InvalidTemplateSyntaxException;
 use aymanrb\UnstructuredTextParser\Exception\InvalidTemplateVariableNameException;
 
 class TemplatesHelper
@@ -133,10 +134,18 @@ class TemplatesHelper
             $templateText
         ) ?? $templateText;
 
-        return preg_replace(
+        $preparedPattern = preg_replace(
             self::REGEX_GENERIC_VARIABLE,
             self::REPLACE_GENERIC_VARIABLE,
             $templateText
         ) ?? $templateText;
+
+        if (@preg_match('/' . $preparedPattern . '/s', '') === false) {
+            throw new InvalidTemplateSyntaxException(
+                sprintf('Template produced an invalid regex pattern: %s', preg_last_error_msg())
+            );
+        }
+
+        return $preparedPattern;
     }
 }
