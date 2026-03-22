@@ -44,6 +44,12 @@ class TextParser
     {
         $this->resetParseResults();
 
+        if (trim($text) === '') {
+            $this->logger->warning('parseText called with empty or whitespace-only text, skipping parsing');
+
+            return $this->parseResults;
+        }
+
         $parsableTemplates = $this->templatesHelper->getTemplates($text, $findMatchingTemplate);
 
         foreach ($parsableTemplates as $templatePath => $templatePattern) {
