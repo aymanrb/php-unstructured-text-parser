@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace aymanrb\UnstructuredTextParser\Helper;
 
 use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
+use aymanrb\UnstructuredTextParser\Exception\InvalidTemplateVariableNameException;
 
 class TemplatesHelper
 {
@@ -90,8 +91,26 @@ class TemplatesHelper
         return $templates;
     }
 
+    private function validateVariableNames(string $templateText): void
+    {
+        preg_match_all('/\{%([^%:]+)(?::[^%]*)?\%\}/', $templateText, $matches);
+
+        foreach ($matches[1] as $variableName) {
+            if (!preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $variableName)) {
+                throw new InvalidTemplateVariableNameException(
+                    sprintf(
+                        'Invalid template variable name "%s": must start with a letter or underscore and contain only alphanumeric characters and underscores.',
+                        $variableName
+                    )
+                );
+            }
+        }
+    }
+
     private function prepareTemplate(string $templateText): string
     {
+        $this->validateVariableNames($templateText);
+
         $templateText = preg_quote($templateText, '/');
 
         $templateText = preg_replace(
