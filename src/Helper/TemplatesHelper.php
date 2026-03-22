@@ -21,6 +21,9 @@ class TemplatesHelper
 
     private readonly \FilesystemIterator $directoryIterator;
 
+    /** @var array<string, string> */
+    private array $templateCache = [];
+
     public function __construct(string $templatesDir)
     {
         $this->directoryIterator = $this->createTemplatesDirIterator($templatesDir);
@@ -63,7 +66,7 @@ class TemplatesHelper
 
             if ($matchPercentage > $maxMatch) {
                 $maxMatch = $matchPercentage;
-                $matchedTemplate = [$fileInfo->getPathname() => $this->prepareTemplate($templateContent)];
+                $matchedTemplate = [$fileInfo->getPathname() => $this->getCachedPreparedTemplate($fileInfo->getPathname(), $templateContent)];
             }
         }
 
@@ -84,12 +87,21 @@ class TemplatesHelper
                 continue;
             }
 
-            $templates[$fileInfo->getPathname()] = $this->prepareTemplate($templateContent);
+            $templates[$fileInfo->getPathname()] = $this->getCachedPreparedTemplate($fileInfo->getPathname(), $templateContent);
         }
 
         krsort($templates);
 
         return $templates;
+    }
+
+    private function getCachedPreparedTemplate(string $filePath, string $templateContent): string
+    {
+        if (!isset($this->templateCache[$filePath])) {
+            $this->templateCache[$filePath] = $this->prepareTemplate($templateContent);
+        }
+
+        return $this->templateCache[$filePath];
     }
 
     private function validateVariableNames(string $templateText): void
