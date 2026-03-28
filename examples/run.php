@@ -14,7 +14,9 @@ try {
 
             $parseResults = $parser->parseFileContent($txtFileObj->getPathname(), true);
 
-            print_r($parseResults->getParsedRawData());
+            foreach ($parseResults as $key => $value) {
+                echo "$key: $value" . PHP_EOL;
+            }
 
             if ($parseResults->getAppliedTemplateFile()) {
                 echo 'Matched Template: ' . $parseResults->getAppliedTemplateFile() . PHP_EOL;

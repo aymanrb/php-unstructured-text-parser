@@ -42,14 +42,17 @@ $textToParse = 'Text to be parsed fetched from a file, mail, web service, or eve
 
 //performs brute force parsing against all available templates, returns first match successful parsing
 $parseResults = $parser->parseText($textToParse);
-print_r($parseResults->getParsedRawData());
+foreach ($parseResults as $key => $value) {
+    echo "$key: $value" . PHP_EOL;
+}
 
 //slower, performs a similarity check on available templates to select the most matching template before parsing
-print_r(
-    $parser
-        ->parseText($textToParse, true)
-        ->getParsedRawData()
-);
+foreach ($parser->parseText($textToParse, true) as $key => $value) {
+    echo "$key: $value" . PHP_EOL;
+}
+
+//or use the getParsedRawData() method to get the results as an array
+$resultsArray = $parser->parseText($textToParse)->getParsedRawData();
 ```
 
 ## Parsing Procedure
