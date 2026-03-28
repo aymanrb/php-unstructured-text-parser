@@ -1,25 +1,27 @@
-Unstructured Text Parser [PHP]
-===========================================
+# Unstructured Text Parser [PHP]
+
 [![Tests](https://github.com/aymanrb/php-unstructured-text-parser/actions/workflows/php.yml/badge.svg)](https://github.com/aymanrb/php-unstructured-text-parser/actions/workflows/php.yml)
 [![Latest Stable Version](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/v/stable.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 [![Total Downloads](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/downloads)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 [![License](https://poser.pugx.org/aymanrb/php-unstructured-text-parser/license.svg)](https://packagist.org/packages/aymanrb/php-unstructured-text-parser)
 
-About Unstructured Text Parser
-----------------------------------
-This is a small PHP library to help extract text out of documents that are not structured in a processing friendly format. 
-When you want to parse text out of form generated emails for example you can create a template matching the expected incoming mail format 
+## About Unstructured Text Parser
+
+This is a small PHP library to help extract text out of documents that are not structured in a processing friendly format.
+When you want to parse text out of form generated emails for example you can create a template matching the expected incoming mail format
 while specifying the variable text elements and leave the rest for the class to extract your pre-formatted variables out of the incoming mails' body text.
 
 Useful when you want to parse data out of:
-* Emails generated from web forms
-* Documents with definable templates / expressions
 
-Installation
-----------
-PHP Unstructured Text Parser is available on [Packagist](https://packagist.org/packages/aymanrb/php-unstructured-text-parser) (using semantic versioning), and installation via [Composer](https://getcomposer.org) is recommended. 
+- Emails generated from web forms
+- Documents with definable templates / expressions
+
+## Installation
+
+PHP Unstructured Text Parser is available on [Packagist](https://packagist.org/packages/aymanrb/php-unstructured-text-parser) (using semantic versioning), and installation via [Composer](https://getcomposer.org) is recommended.
 
 Requirements:
+
 - PHP 8.1 or newer
 
 Install it with Composer:
@@ -28,9 +30,8 @@ Install it with Composer:
 composer require aymanrb/php-unstructured-text-parser
 ```
 
+## [Usage example](https://github.com/aymanrb/php-unstructured-text-parser/blob/master/examples/run.php)
 
-[Usage example](https://github.com/aymanrb/php-unstructured-text-parser/blob/master/examples/run.php)
-----------
 ```php
 <?php
 include_once __DIR__ . '/../vendor/autoload.php';
@@ -51,26 +52,26 @@ print_r(
 );
 ```
 
-Parsing Procedure
-----------
+## Parsing Procedure
+
 1- Grab a single copy of the text you want to parse.
 
-2- Replace every single varying text within it to a named variable in the form of ``{%VariableName%}`` if you want to match
-everything in this part of text or ``{%VariableName:Pattern%}`` if you want to match a specific set of characters or use a more
+2- Replace every single varying text within it to a named variable in the form of `{%VariableName%}` if you want to match
+everything in this part of text or `{%VariableName:Pattern%}` if you want to match a specific set of characters or use a more
 precise pattern.
 
-3- Add the templates file into the templates directory (defined in parsing code) with a txt extension ``fileName.txt``
+3- Add the templates file into the templates directory (defined in parsing code) with a txt extension `fileName.txt`
 
 4- Pass the text you wish to parse to the parse method of the class and let it do the magic for you.
 
-Template Example
-------------------------
+## Template Example
+
 If the text documents you want to parse looks like this:
 
 ```
 Hello,
 If you wish to parse message coming from a website that states info like:
-ID & Source: 12234432 Website Form  
+ID & Source: 12234432 Website Form
 Name: Pet Cat
 E-Mail: email@example.com
 Comment: Some text goes here
@@ -80,7 +81,7 @@ Best Regards
 Admin
 ```
 
-Your Template file (``example_template.txt``) could be something like:
+Your Template file (`example_template.txt`) could be something like:
 
 ```
 Hello,
@@ -107,11 +108,21 @@ Array(
 )
 ```
 
-Upgrading from v1.x to v2.x
-------------------------
+## Upgrading from v2.x to v3.1.0
+
+- **PHP 8.1+ required**: The PHP 7.4 support is dropped.
+- **New exceptions may be thrown**: `InvalidTemplateVariableNameException` is thrown for template variables with invalid PCRE capture group names; `InvalidTemplateSyntaxException` is thrown for templates that produce an invalid regex. Both extend `UnstructuredTextParserException`.
+- **Empty input to `parseText()` is short-circuited**: passing an empty or whitespace-only string returns an empty `ParseResult` immediately.
+- **`ParseResult` now implements `Countable` and `IteratorAggregate`**: you can now use `count($result)` and `foreach ($result as $key => $value)` directly instead of going through `getParsedRawData()`.
+- **`getOrFail(string $key)`** method was added to `ParseResult` as a shorthand for `get($key, true)`.
+
+---
+
+## Upgrading from v1.x to v2.x
+
 Version 2.0 is more or less a refactored copy of version 1.x of the library and provides the exact same functionality.
 There is just one slight difference in the results returned. It's now a parsed data object instead of an array.
-To get the results as an array like it used to be in v1.x simply call "*getParsedRawData()*" on the returned object.
+To get the results as an array like it used to be in v1.x simply call "_getParsedRawData()_" on the returned object.
 
 ```php
 <?php
