@@ -46,9 +46,12 @@
     "psr/log": "^1.0.1 || ^2.0 || ^3.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^10.5"
+    "phpunit/phpunit": "^10.5",
+    "phpstan/phpstan": "^2.0"
   },
   "scripts": {
-    "test": "phpunit --configuration phpunit.xml"
+    "test": "phpunit --configuration phpunit.xml",
+    "analyse": "phpstan analyse --configuration phpstan.neon",
+    "lint": "find src tests -name '*.php' -print0 | xargs -0 php -l"
   }
 }

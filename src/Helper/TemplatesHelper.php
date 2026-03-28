@@ -5,6 +5,8 @@ declare(strict_types = 1);
 namespace aymanrb\UnstructuredTextParser\Helper;
 
 use aymanrb\UnstructuredTextParser\Exception\InvalidTemplatesDirectoryException;
+use aymanrb\UnstructuredTextParser\Exception\InvalidTemplateSyntaxException;
+use aymanrb\UnstructuredTextParser\Exception\InvalidTemplateVariableNameException;
 
 class TemplatesHelper
 {
@@ -18,6 +20,9 @@ class TemplatesHelper
     private const REPLACE_VARIABLE_WITH_PATTERN = '(?<$1>$2)'; //(?<Var>Pattern)
 
     private readonly \FilesystemIterator $directoryIterator;
+
+    /** @var array<string, string> */
+    private array $templateCache = [];
 
     public function __construct(string $templatesDir)
     {
@@ -61,7 +66,7 @@ class TemplatesHelper
 
             if ($matchPercentage > $maxMatch) {
                 $maxMatch = $matchPercentage;
-                $matchedTemplate = [$fileInfo->getPathname() => $this->prepareTemplate($templateContent)];
+                $matchedTemplate = [$fileInfo->getPathname() => $this->getCachedPreparedTemplate($fileInfo->getPathname(), $templateContent)];
             }
         }
 
@@ -82,7 +87,7 @@ class TemplatesHelper
                 continue;
             }
 
-            $templates[$fileInfo->getPathname()] = $this->prepareTemplate($templateContent);
+            $templates[$fileInfo->getPathname()] = $this->getCachedPreparedTemplate($fileInfo->getPathname(), $templateContent);
         }
 
         krsort($templates);
@@ -90,8 +95,35 @@ class TemplatesHelper
         return $templates;
     }
 
+    private function getCachedPreparedTemplate(string $filePath, string $templateContent): string
+    {
+        if (!isset($this->templateCache[$filePath])) {
+            $this->templateCache[$filePath] = $this->prepareTemplate($templateContent);
+        }
+
+        return $this->templateCache[$filePath];
+    }
+
+    private function validateVariableNames(string $templateText): void
+    {
+        preg_match_all('/\{%([^%:]+)(?::[^%]*)?\%\}/', $templateText, $matches);
+
+        foreach ($matches[1] as $variableName) {
+            if (!preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $variableName)) {
+                throw new InvalidTemplateVariableNameException(
+                    sprintf(
+                        'Invalid template variable name "%s": must start with a letter or underscore and contain only alphanumeric characters and underscores.',
+                        $variableName
+                    )
+                );
+            }
+        }
+    }
+
     private function prepareTemplate(string $templateText): string
     {
+        $this->validateVariableNames($templateText);
+
         $templateText = preg_quote($templateText, '/');
 
         $templateText = preg_replace(
@@ -114,10 +146,18 @@ class TemplatesHelper
             $templateText
         ) ?? $templateText;
 
-        return preg_replace(
+        $preparedPattern = preg_replace(
             self::REGEX_GENERIC_VARIABLE,
             self::REPLACE_GENERIC_VARIABLE,
             $templateText
         ) ?? $templateText;
+
+        if (@preg_match('/' . $preparedPattern . '/s', '') === false) {
+            throw new InvalidTemplateSyntaxException(
+                sprintf('Template produced an invalid regex pattern: %s', preg_last_error_msg())
+            );
+        }
+
+        return $preparedPattern;
     }
 }
